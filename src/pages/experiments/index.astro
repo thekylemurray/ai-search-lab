@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const experiments =
+(
+await getCollection(
+"experiments"
+)
+)
+.sort(
+(a, b) =>
+
+new Date(
+b.data.updated
+).getTime()
+
+-
+
+new Date(
+a.data.updated
+).getTime()
+
+);
+
+const featured =
+experiments[0];
+
+const remaining =
+experiments.slice(1);
+---
+
+<BaseLayout title="Experiments">
+
+<h1>
+
+Experiments
+
+</h1>
+
+<p>
+
+Research and experiments
+around AI discoverability,
+content architecture,
+and digital experience.
+
+</p>
+
+<div class="cards">
+
+{
+
+experiments.map(
+experiment => (
+
+<a
+
+class="card"
+
+href={`/experiments/${experiment.id}`}
+
+>
+
+<div class="card-meta">
+
+{experiment.data.status}
+
+</div>
+
+<h3>
+
+{experiment.data.title}
+
+</h3>
+
+<p>
+
+{experiment.data.description}
+
+</p>
+
+</a>
+
+)
+
+)
+
+}
+
+</div>
+
+</BaseLayout>

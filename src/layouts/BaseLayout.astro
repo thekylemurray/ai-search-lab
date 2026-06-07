@@ -1,0 +1,68 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "AI Search Lab",
+  description = "Experiments in AI discoverability, content architecture, SEO, analytics, and digital experience."
+} = Astro.props;
+
+const currentPath =
+  Astro.url.pathname;
+---
+
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <title>{title}</title>
+
+  <meta
+    name="description"
+    content={description}
+  />
+
+  <meta property="og:title" content={title} />
+
+<meta
+  property="og:description"
+  content={description}
+/>
+
+<meta property="og:type" content="website" />
+
+<meta name="twitter:card" content="summary_large_image" />
+</head>
+
+  <body>
+<nav>
+  <a class={currentPath === "/" ? "active" : ""} href="/">Home</a>
+  <a class={currentPath.startsWith("/experiments") ? "active" : ""} href="/experiments">Experiments</a>
+  <a class={currentPath.startsWith("/topics") || currentPath.startsWith("/tags") ? "active" : ""} href="/topics">Topics</a>
+  <a class={currentPath.startsWith("/projects") ? "active" : ""} href="/projects">Projects</a>
+  <a class={currentPath.startsWith("/about") ? "active" : ""} href="/about">About</a>
+  <a class={currentPath.startsWith("/contact") ? "active" : ""} href="/contact">Contact</a>
+</nav>
+<div class="nav-accent"></div>
+   <main>
+  <slot />
+</main>
+
+<footer>
+
+<p>
+© 2026 Kyle Murray
+</p>
+
+<p>
+Built with Astro • Exploring AI discoverability
+</p>
+
+</footer>
+
+</body>
+</html>

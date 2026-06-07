@@ -1,0 +1,115 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+
+const experiments =
+await getCollection(
+"experiments"
+);
+
+const tags =
+[
+...new Set(
+
+experiments.flatMap(
+e =>
+e.data.tags || []
+)
+
+)
+
+];
+
+return tags.map(
+tag => ({
+
+params: {
+
+tag
+
+},
+
+props: {
+
+tag
+
+}
+
+})
+);
+
+}
+
+const {
+tag
+} =
+Astro.props;
+
+const experiments =
+(
+await getCollection(
+"experiments"
+)
+)
+.filter(
+e =>
+e.data.tags?.includes(
+tag
+)
+);
+---
+
+<BaseLayout title={tag}>
+
+<h1>
+
+{tag}
+
+</h1>
+
+<div class="cards">
+
+{
+
+experiments.map(
+experiment => (
+
+<a
+
+class="card"
+
+href={`/experiments/${experiment.id}`}
+
+>
+
+<div class="card-meta">
+
+{experiment.data.status}
+
+</div>
+
+<h3>
+
+{experiment.data.title}
+
+</h3>
+
+<p>
+
+{experiment.data.description}
+
+</p>
+
+</a>
+
+)
+
+)
+
+}
+
+</div>
+
+</BaseLayout>

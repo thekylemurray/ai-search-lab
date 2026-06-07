@@ -1,0 +1,147 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const {
+  title,
+  description,
+  status = "In Progress",
+  updated = new Date(),
+  tags = [],
+  headings = [],
+  readingTime = null
+} = Astro.props;
+
+const formattedUpdated = new Date(updated).toLocaleDateString(
+  "en-US",
+  {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }
+);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+>
+
+<a class="back-link" href="/experiments">
+
+← Back to experiments
+
+</a>
+
+<article class="experiment">
+
+<p class="eyebrow">
+
+Experiment
+
+</p>
+
+<h1>
+
+{title}
+
+</h1>
+
+<p class="lede">
+{description}
+</p>
+
+<div class="meta">
+
+<span>
+Status: {status}
+</span>
+
+<span>
+{formattedUpdated}
+</span>
+
+{readingTime && (
+
+<span>
+{readingTime} min read
+</span>
+
+)}
+
+</div>
+
+<div class="tags">
+
+{
+
+tags.map((tag) => (
+
+<a
+href={`/tags/${tag}`}
+>
+
+{tag}
+
+</a>
+
+))
+
+}
+
+</div>
+
+<div class="experiment-body">
+
+{
+
+headings.length > 0 && (
+
+<aside class="toc">
+
+<h3>
+
+Contents
+
+</h3>
+
+<ul>
+
+{
+
+headings.map((heading) => (
+
+<li>
+
+<a
+href={`#${heading.slug}`}
+>
+
+{heading.text}
+
+</a>
+
+</li>
+
+))
+
+}
+
+</ul>
+
+</aside>
+
+)
+
+}
+
+<div>
+
+<slot />
+
+</div>
+
+</div>
+
+</article>
+
+</BaseLayout>

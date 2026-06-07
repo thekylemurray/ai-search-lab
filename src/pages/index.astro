@@ -1,0 +1,262 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const experiments =
+(
+await getCollection(
+"experiments"
+)
+)
+.sort(
+(a, b) =>
+
+new Date(
+b.data.updated
+).getTime()
+
+-
+
+new Date(
+a.data.updated
+).getTime()
+
+);
+
+const featured = experiments[0];
+
+const remaining = experiments.slice(1);
+
+const topics = new Set(
+  experiments.flatMap((experiment) => experiment.data.tags)
+);
+
+const yearStarted = Math.min(
+  ...experiments.map((experiment) =>
+    experiment.data.updated.getFullYear()
+  )
+);
+---
+
+<BaseLayout title="AI Search Lab">
+
+<h1>
+Building digital experiences for humans and AI systems.
+</h1>
+
+<p>
+Experiments in AI discoverability,
+content architecture,
+analytics,
+and modern web operations.
+</p>
+
+<div class="status">
+🚧 Site currently under construction. First experiment coming soon.
+</div>
+
+<section class="stats">
+
+<div>
+  <div class="stat-number">
+    {experiments.length}
+  </div>
+
+  <div class="stat-label">
+    Experiments
+  </div>
+</div>
+
+<div>
+  <div class="stat-number">
+    {topics.size}
+  </div>
+
+  <div class="stat-label">
+    Topics
+  </div>
+</div>
+
+<div>
+  <div class="stat-number">
+    {yearStarted}
+  </div>
+
+  <div class="stat-label">
+    Year Started
+  </div>
+</div>
+
+</section>
+
+<section class="stack-section">
+
+<h2>Focus Stack</h2>
+
+<div class="stack-grid">
+
+<div>
+  <h3>Discovery</h3>
+  <p>SEO, AI search, content strategy, entity clarity.</p>
+</div>
+
+<div>
+  <h3>Systems</h3>
+  <p>Astro, structured content, Markdown collections, CMS thinking.</p>
+</div>
+
+<div>
+  <h3>Measurement</h3>
+  <p>Analytics, visibility signals, citation behavior, experiment design.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="why-section">
+
+<h2>Why This Exists</h2>
+
+<p class="lede">
+Search is changing. People are no longer only finding information through traditional search engines; they are increasingly asking AI systems to summarize, recommend, and cite sources.
+</p>
+
+<p>
+AI Search Lab is a working space for exploring what that shift means for websites, content systems, SEO, analytics, and digital experience teams.
+</p>
+
+</section>
+
+<section class="now-testing">
+
+<h2>Now Testing</h2>
+
+<ul>
+
+<li>
+How AI systems interpret structured content
+</li>
+
+<li>
+Whether metadata changes citation behavior
+</li>
+
+<li>
+How information architecture impacts retrieval
+</li>
+
+</ul>
+
+</section>
+
+<section class="experiments">
+
+<h2>
+Featured Experiments
+</h2>
+
+<div class="cards">
+
+{
+
+experiments.map((experiment) => (
+
+<a
+class="card"
+href={`/experiments/${experiment.id}`}
+>
+
+<div class="card-meta">
+
+{experiment.data.status}
+
+</div>
+
+<h3>
+
+{experiment.data.title}
+
+</h3>
+
+<p>
+
+{experiment.data.description}
+
+</p>
+
+</a>
+
+))
+
+}
+
+</div>
+
+</section>
+
+<section class="projects">
+
+<h2>
+
+Projects
+
+</h2>
+
+<div class="cards">
+
+<a class="card" href="/projects">
+
+<div class="card-meta">
+
+IN PROGRESS
+
+</div>
+
+<h3>
+
+AI Search Lab
+
+</h3>
+
+<p>
+
+A content-driven Astro site exploring
+AI discoverability,
+structured content,
+SEO,
+and digital experience.
+
+</p>
+
+</a>
+
+<div class="card">
+
+<div class="card-meta">
+
+COMING SOON
+
+</div>
+
+<h3>
+
+Future Project
+
+</h3>
+
+<p>
+
+Reserved for future experiments,
+tools,
+or interactive prototypes.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</BaseLayout>

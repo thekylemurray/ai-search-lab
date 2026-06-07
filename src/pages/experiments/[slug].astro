@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from "astro:content";
+import ExperimentLayout from "../../layouts/ExperimentLayout.astro";
+
+export async function getStaticPaths() {
+  const experiments = await getCollection("experiments");
+
+  return experiments.map((experiment) => ({
+    params: {
+      slug: experiment.id,
+    },
+    props: {
+      experiment,
+    },
+  }));
+}
+
+const { experiment } = Astro.props;
+
+const { Content, headings } = await render(experiment);
+
+const wordCount = experiment.body.split(/\s+/).length;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+---
+
+<ExperimentLayout
+  title={experiment.data.title}
+  description={experiment.data.description}
+  status={experiment.data.status}
+  updated={experiment.data.updated}
+  tags={experiment.data.tags}
+  headings={headings}
+  readingTime={readingTime}
+>
+  <Content />
+</ExperimentLayout>

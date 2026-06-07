@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const experiments = await getCollection("experiments");
+
+const topics = [...new Set(
+  experiments.flatMap((experiment) => experiment.data.tags)
+)].sort();
+---
+
+<BaseLayout
+  title="Topics | AI Search Lab"
+  description="Browse AI Search Lab topics including AI search, SEO, LLMs, and content architecture."
+>
+
+<h1>Topics</h1>
+
+<p class="lede">
+Browse experiments by topic.
+</p>
+
+<div class="tags">
+
+{topics.map((topic) => (
+
+<a href={`/tags/${topic}`}>
+{topic}
+</a>
+
+))}
+
+</div>
+
+</BaseLayout>
