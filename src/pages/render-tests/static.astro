@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { renderTestContent } from "../../data/renderTestContent";
+---
+
+<BaseLayout
+  title="Static HTML Render Test"
+  description="A static HTML test page for evaluating AI retrieval reliability."
+>
+
+<h1>{renderTestContent.title}</h1>
+
+<p class="lede">
+Rendering method: Static HTML
+</p>
+
+<h2>Main Recommendation</h2>
+
+<p>
+{renderTestContent.recommendation}
+</p>
+
+<h2>Experiment Context</h2>
+
+<p>
+{renderTestContent.body}
+</p>
+
+</BaseLayout>

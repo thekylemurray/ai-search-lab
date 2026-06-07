@@ -84,3 +84,9 @@ Client-rendered content may be more fragile because some crawlers and retrieval 
 ## Next Step
 
 Build the three test pages and compare how AI systems retrieve and describe each one.
+
+## Test Pages
+
+- [Static HTML test page](/render-tests/static)
+- [Server-rendered HTML test page](/render-tests/server)
+- [Client-rendered JavaScript test page](/render-tests/client)
