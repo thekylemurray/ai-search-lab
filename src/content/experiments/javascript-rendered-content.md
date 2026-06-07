@@ -72,7 +72,7 @@ Example prompts:
 | Variant | Retrieved | Correct Summary | Cited | Notes |
 |---|---|---|---|---|
 | Static HTML | — | — | — | — |
-| Server-rendered HTML | — | — | — | — |
+| Pre-rendered HTML | — | — | — | — |
 | Client-rendered JS | — | — | — | — |
 
 ## Expected Outcome
@@ -88,5 +88,5 @@ Build the three test pages and compare how AI systems retrieve and describe each
 ## Test Pages
 
 - [Static HTML test page](/render-tests/static)
-- [Server-rendered HTML test page](/render-tests/server)
+- [Pre-rendered HTML test page](/render-tests/pre-rendered)
 - [Client-rendered JavaScript test page](/render-tests/client)

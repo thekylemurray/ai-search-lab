@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { renderTestContent } from "../../data/renderTestContent";
+
+const renderedAt = new Date().toISOString();
+---
+
+<BaseLayout
+  title="Pre-rendered HTML Render Test"
+  description="A pre-rendered HTML test page for evaluating AI retrieval reliability."
+>
+
+<h1>{renderTestContent.title}</h1>
+
+<p class="lede">
+Rendering method: Pre-rendered HTML
+</p>
+
+<h2>Main Recommendation</h2>
+
+<p>
+{renderTestContent.recommendation}
+</p>
+
+<h2>Experiment Context</h2>
+
+<p>
+{renderTestContent.body}
+</p>
+
+<p>
+Build timestamp: {renderedAt}
+</p>
+
+</BaseLayout>
