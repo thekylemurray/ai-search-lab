@@ -1,0 +1,67 @@
+---
+import {sanityClient} from '../../lib/sanity'
+import {urlFor} from '../../lib/image'
+
+export async function getStaticPaths() {
+  const vehicles = await sanityClient.fetch(`
+*[_type=="vehicle"]{
+ title,
+ heroText,
+ price,
+ image,
+ ctaText,
+ ctaUrl,
+ "slug": slug.current
+}
+`)
+
+  return vehicles.map((vehicle:any) => ({
+    params: {
+      slug: vehicle.slug
+    },
+    props: {
+      vehicle
+    }
+  }))
+}
+
+const {vehicle} = Astro.props
+---
+
+<h1>{vehicle.title}</h1>
+
+{vehicle.image && (
+  <img 
+    src={urlFor(vehicle.image).width(900).url()} 
+    alt={vehicle.title} 
+    style="max-width: 600px; width: 100%; height: auto;" 
+  />
+)}
+
+<p>{vehicle.heroText}</p>
+
+<p>{vehicle.price}</p>
+
+{
+vehicle.ctaUrl && (
+<a
+ href={vehicle.ctaUrl}
+ target="_blank"
+ style="
+ display:inline-block;
+ padding:12px 20px;
+ background:#0a84ff;
+ color:white;
+ text-decoration:none;
+ border-radius:8px;
+ "
+>
+ {vehicle.ctaText}
+</a>
+)
+}
+
+<a href="/vehicles">
+Back to all vehicles
+</a>
+</a>
