@@ -1,0 +1,54 @@
+---
+import '../styles/global.css'
+---
+
+<style>
+:global(body){
+  background:#f8fafc;
+  color:#111827;
+}
+
+:global(body p){
+  opacity:1;
+}
+</style>
+
+<main class="vehicle-page">
+  <section class="ev-home-hero">
+    <p class="eyebrow">EV Landing Lab</p>
+
+    <h1>Headless EV marketing demo</h1>
+
+    <p class="hero-text">
+      A small Astro, Sanity, and Vercel project showing content-managed vehicle pages,
+      dynamic routes, comparison content, lead capture, and attribution fields.
+    </p>
+
+    <div class="ev-home-actions">
+      <a class="cta-button" href="/vehicles">
+        View EV offers
+      </a>
+
+      <a class="secondary-button" href="/compare">
+        Compare vehicles
+      </a>
+    </div>
+  </section>
+
+  <section class="ev-home-grid">
+    <div>
+      <h2>Sanity CMS</h2>
+      <p>Vehicle content, pricing, images, CTAs, lead form settings, and specs are managed in Sanity.</p>
+    </div>
+
+    <div>
+      <h2>Astro</h2>
+      <p>Astro renders fast static pages, dynamic vehicle routes, and structured landing pages.</p>
+    </div>
+
+    <div>
+      <h2>Vercel</h2>
+      <p>GitHub pushes trigger deploys, making the site easy to preview, test, and publish.</p>
+    </div>
+  </section>
+</main>

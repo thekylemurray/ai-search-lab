@@ -1,0 +1,116 @@
+---
+import '../styles/global.css'
+import { sanityClient } from '../lib/sanity'
+import { urlFor } from '../lib/image'
+
+const vehicles = await sanityClient.fetch(`
+*[_type=="vehicle"] | order(title asc){
+  title,
+  heroText,
+  image,
+  price,
+  range,
+  chargingSpeed,
+  bodyType,
+  inventoryStatus,
+  "slug": slug.current
+}
+`)
+---
+
+<style>
+:global(body){
+  background:#f8fafc;
+  color:#111827;
+}
+
+:global(body p){
+  opacity:1;
+}
+</style>
+
+<main class="vehicle-page">
+
+  <a class="back-link" href="/vehicles">
+    Back to all vehicles
+  </a>
+
+  <section class="vehicles-header">
+    <p class="eyebrow">EV Landing Lab</p>
+    <h1>Compare EV Offers</h1>
+    <p class="hero-text">
+      Compare available EV offers using structured content from Sanity.
+    </p>
+  </section>
+
+  <section class="compare-grid">
+    {vehicles.map((vehicle:any)=>(
+      <article class="compare-card">
+        {vehicle.image && (
+          <img
+            src={urlFor(vehicle.image).width(700).height(420).url()}
+            alt={vehicle.title}
+          />
+        )}
+
+        <h2>{vehicle.title}</h2>
+        <p>{vehicle.heroText}</p>
+
+        <a href={`/vehicles/${vehicle.slug}`}>
+          View offer
+        </a>
+      </article>
+    ))}
+  </section>
+
+  <section class="compare-table-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Spec</th>
+          {vehicles.map((vehicle:any)=>(
+            <th>{vehicle.title}</th>
+          ))}
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Price</td>
+          {vehicles.map((vehicle:any)=>(
+            <td>{vehicle.price}</td>
+          ))}
+        </tr>
+
+        <tr>
+          <td>Range</td>
+          {vehicles.map((vehicle:any)=>(
+            <td>{vehicle.range}</td>
+          ))}
+        </tr>
+
+        <tr>
+          <td>Charging</td>
+          {vehicles.map((vehicle:any)=>(
+            <td>{vehicle.chargingSpeed}</td>
+          ))}
+        </tr>
+
+        <tr>
+          <td>Body Type</td>
+          {vehicles.map((vehicle:any)=>(
+            <td>{vehicle.bodyType}</td>
+          ))}
+        </tr>
+
+        <tr>
+          <td>Inventory</td>
+          {vehicles.map((vehicle:any)=>(
+            <td>{vehicle.inventoryStatus}</td>
+          ))}
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>

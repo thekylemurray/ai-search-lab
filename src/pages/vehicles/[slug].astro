@@ -1,67 +1,200 @@
 ---
-import {sanityClient} from '../../lib/sanity'
-import {urlFor} from '../../lib/image'
+import '../../styles/global.css'
+import { sanityClient } from '../../lib/sanity'
+import { urlFor } from '../../lib/image'
 
 export async function getStaticPaths() {
   const vehicles = await sanityClient.fetch(`
 *[_type=="vehicle"]{
- title,
- heroText,
- price,
- image,
- ctaText,
- ctaUrl,
- "slug": slug.current
+  title,
+  heroText,
+  image,
+  price,
+  ctaUrl,
+  ctaText,
+  showLeadForm,
+  leadHeadline,
+  range,
+  chargingSpeed,
+  bodyType,
+  inventoryStatus,
+  highlights,
+  "slug": slug.current
 }
 `)
 
-  return vehicles.map((vehicle:any) => ({
+  return vehicles.map((vehicle: any) => ({
     params: {
-      slug: vehicle.slug
+      slug: vehicle.slug,
     },
     props: {
-      vehicle
-    }
+      vehicle,
+    },
   }))
 }
 
-const {vehicle} = Astro.props
+const { vehicle } = Astro.props
 ---
+
+<style>
+:global(body){
+  background:#f8fafc;
+  color:#111827;
+}
+
+:global(body p){
+  opacity:1;
+}
+</style>
+
+<main class="vehicle-page">
+
+<a class="back-link" href="/vehicles">
+Back to all vehicles
+</a>
+
+<section class="vehicle-hero">
+
+<div class="vehicle-copy">
+
+<p class="eyebrow">
+EV Landing Lab
+</p>
 
 <h1>{vehicle.title}</h1>
 
-{vehicle.image && (
-  <img 
-    src={urlFor(vehicle.image).width(900).url()} 
-    alt={vehicle.title} 
-    style="max-width: 600px; width: 100%; height: auto;" 
-  />
+<div class={`inventory ${vehicle.inventoryStatus}`}>
+  {vehicle.inventoryStatus}
+</div>
+
+<p class="hero-text">
+{vehicle.heroText}
+</p>
+
+{vehicle.highlights && (
+  <section class="vehicle-highlights">
+    <h2>Highlights</h2>
+
+    <ul>
+      {vehicle.highlights.map((highlight: string) => (
+        <li>{highlight}</li>
+      ))}
+    </ul>
+  </section>
 )}
 
-<p>{vehicle.heroText}</p>
+<p class="price">
+{vehicle.price}
+</p>
 
-<p>{vehicle.price}</p>
+<div class="vehicle-specs">
+  {vehicle.range && (
+    <div>
+      <span>Range</span>
+      <strong>{vehicle.range}</strong>
+    </div>
+  )}
+
+  {vehicle.chargingSpeed && (
+    <div>
+      <span>Charging</span>
+      <strong>{vehicle.chargingSpeed}</strong>
+    </div>
+  )}
+
+  {vehicle.bodyType && (
+    <div>
+      <span>Body Type</span>
+      <strong>{vehicle.bodyType}</strong>
+    </div>
+  )}
+</div>
 
 {
 vehicle.ctaUrl && (
 <a
- href={vehicle.ctaUrl}
- target="_blank"
- style="
- display:inline-block;
- padding:12px 20px;
- background:#0a84ff;
- color:white;
- text-decoration:none;
- border-radius:8px;
- "
+class="cta-button"
+href={vehicle.ctaUrl}
+target="_blank"
 >
- {vehicle.ctaText}
+{vehicle.ctaText}
 </a>
 )
 }
 
-<a href="/vehicles">
-Back to all vehicles
-</a>
-</a>
+</div>
+
+{
+vehicle.image && (
+<img
+class="vehicle-image"
+src={urlFor(vehicle.image).width(1200).url()}
+alt={vehicle.title}
+/>
+)
+}
+
+</section>
+
+{
+vehicle.showLeadForm === true && (
+<section class="lead-card">
+
+<form
+name="vehicle-lead"
+method="POST"
+action="https://formspree.io/f/xjgdldky"
+>
+
+<input type="hidden" name="vehicle" value={vehicle.title} />
+<input type="hidden" name="pageUrl" value={Astro.url.pathname} />
+<input type="hidden" name="source" value="EV Landing Lab" />
+<input type="hidden" name="utm_source" id="utm_source" />
+<input type="hidden" name="utm_medium" id="utm_medium" />
+<input type="hidden" name="utm_campaign" id="utm_campaign" />
+
+<h2>{vehicle.leadHeadline}</h2>
+
+<label>
+Name
+<input type="text" name="name" required />
+</label>
+
+<label>
+Email
+<input type="email" name="email" required />
+</label>
+
+<label>
+Preferred contact method
+<select name="contactMethod">
+<option>Email</option>
+<option>Phone</option>
+<option>Text</option>
+</select>
+</label>
+
+<button type="submit">
+Submit
+</button>
+
+</form>
+
+</section>
+)
+}
+
+<script>
+const params = new URLSearchParams(window.location.search)
+
+document.getElementById('utm_source').value =
+params.get('utm_source') || ''
+
+document.getElementById('utm_medium').value =
+params.get('utm_medium') || ''
+
+document.getElementById('utm_campaign').value =
+params.get('utm_campaign') || ''
+</script>
+
+</main>

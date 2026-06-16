@@ -29,11 +29,11 @@ export const vehicle = defineType({
     }),
 
     defineField({
-  name: 'image',
-  title: 'Vehicle Image',
-  type: 'image',
-}),
-    
+      name: 'image',
+      title: 'Vehicle Image',
+      type: 'image',
+    }),
+
     defineField({
       name: 'price',
       title: 'Price',
@@ -41,15 +41,68 @@ export const vehicle = defineType({
     }),
 
     defineField({
-  name: 'ctaText',
-  title: 'CTA Text',
-  type: 'string',
+  name: 'range',
+  title: 'Range',
+  type: 'string'
 }),
 
-    defineField({
-  name: 'ctaUrl',
-  title: 'CTA URL',
-  type: 'url',
+defineField({
+  name: 'chargingSpeed',
+  title: 'Charging Speed',
+  type: 'string'
 }),
+
+defineField({
+  name: 'bodyType',
+  title: 'Body Type',
+  type: 'string'
+}),
+
+defineField({
+  name: 'inventoryStatus',
+  title: 'Inventory Status',
+  type: 'string',
+  options: {
+    list: [
+      { title: 'In Stock', value: 'in-stock' },
+      { title: 'Low Inventory', value: 'low' },
+      { title: 'Preorder', value: 'preorder' }
+    ]
+  }
+}),
+
+defineField({
+  name: 'highlights',
+  title: 'Highlights',
+  type: 'array',
+  of: [{ type: 'string' }]
+}),
+
+
+    defineField({
+      name: 'ctaText',
+      title: 'CTA Text',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'ctaUrl',
+      title: 'CTA URL',
+      type: 'url',
+    }),
+
+    defineField({
+      name: 'showLeadForm',
+      title: 'Show Lead Form',
+      type: 'boolean',
+      initialValue: true,
+    }),
+
+    defineField({
+      name: 'leadHeadline',
+      title: 'Lead Form Headline',
+      type: 'string',     
+    }),
+    
   ],
 })

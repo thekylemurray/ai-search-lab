@@ -1,0 +1,88 @@
+---
+import '../../styles/global.css'
+import { sanityClient } from '../../lib/sanity'
+import { urlFor } from '../../lib/image'
+
+const vehicles = await sanityClient.fetch(`
+*[_type=="vehicle"]{
+title,
+heroText,
+image,
+price,
+"slug": slug.current
+}
+`)
+---
+
+<style>
+:global(body){
+background:#f8fafc;
+color:#111827;
+}
+
+:global(body p){
+opacity:1;
+}
+</style>
+
+<main class="vehicle-page">
+
+<section class="vehicles-header">
+
+<p class="eyebrow">
+EV Landing Lab
+</p>
+
+<h1>
+Available EV Offers
+</h1>
+
+<p class="hero-text">
+Explore current inventory.
+</p>
+
+</section>
+
+<section class="vehicle-grid">
+
+{
+vehicles.map((vehicle:any)=>(
+
+<a
+class="vehicle-card"
+href={`/vehicles/${vehicle.slug}`}
+>
+
+{
+vehicle.image && (
+<img
+src={urlFor(vehicle.image).width(800).url()}
+alt={vehicle.title}
+/>
+)
+}
+
+<div>
+
+<h2>
+{vehicle.title}
+</h2>
+
+<p>
+{vehicle.heroText}
+</p>
+
+<strong>
+{vehicle.price}
+</strong>
+
+</div>
+
+</a>
+
+))
+}
+
+</section>
+
+</main>
