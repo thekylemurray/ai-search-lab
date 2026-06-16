@@ -1,7 +1,7 @@
 ---
-import '../../styles/global.css'
-import { sanityClient } from '../../lib/sanity'
-import { urlFor } from '../../lib/image'
+import '../styles/global.css'
+import { sanityClient } from '../lib/sanity'
+import { urlFor } from '../lib/image'
 
 const vehicles = await sanityClient.fetch(`
 *[_type=="vehicle"]{
