@@ -1152,3 +1152,16 @@ color:#1d4ed8;
   padding: 28px;
   box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
 }
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
