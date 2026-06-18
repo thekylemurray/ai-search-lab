@@ -2,67 +2,62 @@
 import "../styles/global.css";
 
 const {
-  title = "AI Search Lab",
-  description = "Experiments in AI discoverability, content architecture, SEO, analytics, and digital experience."
+  title = "AI Search Lab | Kyle Murray",
+  description = "A working portfolio exploring AI discoverability, content architecture, and modern web operations.",
 } = Astro.props;
 
-const currentPath =
-  Astro.url.pathname;
+const currentPath = Astro.url.pathname;
 ---
 
+<!doctype html>
 <html lang="en">
- <head>
-  <meta charset="utf-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  />
-
-  <title>{title}</title>
-
-  <meta
-    name="description"
-    content={description}
-  />
-
-  <meta property="og:title" content={title} />
-
-<meta
-  property="og:description"
-  content={description}
-/>
-
-<meta property="og:type" content="website" />
-
-<meta name="twitter:card" content="summary_large_image" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
 
   <body>
-<nav>
-  <a class={currentPath === "/" ? "active" : ""} href="/">Home</a>
-  <a class={currentPath.startsWith("/experiments") ? "active" : ""} href="/experiments">Experiments</a>
-  <a class={currentPath.startsWith("/topics") || currentPath.startsWith("/tags") ? "active" : ""} href="/topics">Topics</a>
-  <a class={currentPath.startsWith("/projects") ? "active" : ""} href="/projects">Projects</a>
-  <a class={currentPath.startsWith("/about") ? "active" : ""} href="/about">About</a>
-  <a class={currentPath.startsWith("/contact") ? "active" : ""} href="/contact">Contact</a>
-</nav>
-<div class="nav-accent"></div>
-   <main>
+    <header class="site-header">
+      <nav class="site-nav">
+        <a href="/ai-search-lab" class={currentPath === "/ai-search-lab" ? "active" : ""}>
+          Home
+        </a>
+
+        <a href="/experiments" class={currentPath.startsWith("/experiments") ? "active" : ""}>
+          Experiments
+        </a>
+
+        <a href="/topics" class={currentPath.startsWith("/topics") ? "active" : ""}>
+          Topics
+        </a>
+
+        <a href="/projects" class={currentPath.startsWith("/projects") ? "active" : ""}>
+          Projects
+        </a>
+
+        <a href="/ev-lab" class={currentPath.startsWith("/ev-lab") ? "active" : ""}>
+          EV Landing Lab
+        </a>
+
+        <a href="/about" class={currentPath.startsWith("/about") ? "active" : ""}>
+          About
+        </a>
+
+        <a href="/contact" class={currentPath.startsWith("/contact") ? "active" : ""}>
+          Contact
+        </a>
+      </nav>
+    </header>
+
+   <div class="page-shell">
   <slot />
-</main>
+</div>
 
-<footer>
-
-<p>
-© 2026 Kyle Murray
-</p>
-
-<p>
-Built with Astro • Exploring AI discoverability
-</p>
-
-</footer>
-
-</body>
+    <footer class="site-footer">
+      <p>© 2026 Kyle Murray</p>
+      <p>Built with Astro • Exploring AI discoverability</p>
+    </footer>
+  </body>
 </html>
