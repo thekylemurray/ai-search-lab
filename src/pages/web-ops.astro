@@ -1,0 +1,203 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Web Operations Framework | AI Search Lab"
+  description="A practical web operations framework for stakeholder intake, prioritization, QA, launch readiness, and post-launch validation."
+>
+  <main class="web-ops-page">
+    <section class="hero">
+      <p class="eyebrow">Web Operations</p>
+
+      <h1>
+        A practical framework for managing web requests, launches, QA, and ongoing site health.
+      </h1>
+
+      <p class="lede">
+        This page outlines how I approach web production in complex environments where content,
+        CMS workflows, SEO, stakeholders, and engineering teams all need to stay aligned.
+      </p>
+    </section>
+
+    <section class="ops-section">
+      <h2>1. Intake and prioritization</h2>
+
+      <p>
+        Strong web operations starts with a clear intake process. Every request should identify
+        the business goal, audience, deadline, owner, dependencies, and risk level before work begins.
+      </p>
+
+      <div class="ops-table-wrap">
+        <table class="ops-table">
+          <thead>
+            <tr>
+              <th>Request</th>
+              <th>Business impact</th>
+              <th>Effort</th>
+              <th>Risk</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Launch new campaign landing page</td>
+              <td>High</td>
+              <td>Medium</td>
+              <td>Medium</td>
+              <td>P1</td>
+            </tr>
+
+            <tr>
+              <td>Update homepage CTA copy</td>
+              <td>High</td>
+              <td>Low</td>
+              <td>Low</td>
+              <td>P1</td>
+            </tr>
+
+            <tr>
+              <td>Refresh outdated product page</td>
+              <td>Medium</td>
+              <td>Medium</td>
+              <td>Medium</td>
+              <td>P2</td>
+            </tr>
+
+            <tr>
+              <td>Archive outdated event page</td>
+              <td>Low</td>
+              <td>Low</td>
+              <td>Low</td>
+              <td>P3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="ops-section">
+      <h2>2. Launch readiness checklist</h2>
+
+      <div class="ops-grid">
+        <article>
+          <h3>Content</h3>
+          <ul>
+            <li>Final copy approved by business owner</li>
+            <li>Headings follow a logical page hierarchy</li>
+            <li>CTA language matches the campaign goal</li>
+            <li>Outdated or duplicate content has been removed</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>SEO / AEO</h3>
+          <ul>
+            <li>Title and meta description are written</li>
+            <li>Canonical URL is correct</li>
+            <li>Internal links point to relevant next steps</li>
+            <li>Structured content supports retrieval and summarization</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>CMS / QA</h3>
+          <ul>
+            <li>Fields are populated correctly</li>
+            <li>Reusable components are used consistently</li>
+            <li>Images include descriptive alt text</li>
+            <li>Mobile layout has been reviewed</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Tracking</h3>
+          <ul>
+            <li>Forms submit successfully</li>
+            <li>UTM and attribution fields are preserved</li>
+            <li>Analytics events fire as expected</li>
+            <li>Thank-you or conversion flow is validated</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="ops-section">
+      <h2>3. Stakeholder visibility</h2>
+
+      <p>
+        Web production works best when stakeholders can see what is in progress, what is blocked,
+        and what has been shipped. A lightweight status model helps prevent request chaos.
+      </p>
+
+      <div class="workflow">
+        <div>
+          <span>01</span>
+          <strong>Submitted</strong>
+          <p>Request includes goal, owner, deadline, and required assets.</p>
+        </div>
+
+        <div>
+          <span>02</span>
+          <strong>Scoped</strong>
+          <p>Effort, risk, dependencies, and priority are confirmed.</p>
+        </div>
+
+        <div>
+          <span>03</span>
+          <strong>In progress</strong>
+          <p>Content, CMS, design, SEO, and technical work are coordinated.</p>
+        </div>
+
+        <div>
+          <span>04</span>
+          <strong>QA</strong>
+          <p>Page is reviewed for content, layout, metadata, forms, and tracking.</p>
+        </div>
+
+        <div>
+          <span>05</span>
+          <strong>Published</strong>
+          <p>Page is launched, validated, and monitored after release.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ops-section">
+      <h2>4. Post-launch validation</h2>
+
+      <p>
+        A page is not truly done when it goes live. The final step is confirming that the page works
+        in production and supports the business outcome it was created for.
+      </p>
+
+      <div class="ops-callout">
+        <h3>Post-launch checks</h3>
+        <ul>
+          <li>Confirm the live URL resolves correctly</li>
+          <li>Check metadata, canonical URL, and indexability</li>
+          <li>Submit a test form and validate downstream routing</li>
+          <li>Confirm analytics and conversion events are firing</li>
+          <li>Review the page on mobile and desktop</li>
+          <li>Document what changed and any follow-up items</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ops-section">
+      <h2>How this applies to enterprise web teams</h2>
+
+      <p>
+        This framework is designed for the kind of environment where web production is not just
+        publishing pages. It is the operating layer between content, product marketing, SEO/AEO,
+        creative, engineering, analytics, localization, and business stakeholders.
+      </p>
+
+      <p>
+        The goal is to help teams move faster while protecting quality, consistency, discoverability,
+        and long-term CMS health.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

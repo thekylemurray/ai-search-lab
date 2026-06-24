@@ -37,6 +37,10 @@ const currentPath = Astro.url.pathname;
           Projects
         </a>
 
+        <a href="/web-ops" class={currentPath.startsWith("/web-ops") ? "active" : ""}>
+  Web Ops
+</a>
+
         <a href="/ev-lab" class={currentPath.startsWith("/ev-lab") ? "active" : ""}>
           EV Landing Lab
         </a>
