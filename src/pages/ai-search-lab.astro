@@ -18,42 +18,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         A working portfolio exploring how websites can become easier for people,
         search engines, and AI systems to understand.
       </p>
-
-      <div class="hero-actions">
-        <a class="button" href="/experiments">
-          View experiments
-        </a>
-
-        <a class="button secondary" href="/ev-lab">
-          View EV Landing Lab
-        </a>
-      </div>
     </section>
 
     <section class="cards">
-      <article class="card">
+      <a class="card" href="/experiments/ai-understand">
+        <p class="eyebrow">Experiment</p>
         <h2>AI discoverability</h2>
         <p>
           Experiments around structured content, retrieval, AI search visibility,
           and how modern websites can be interpreted by generative systems.
         </p>
-      </article>
+      </a>
 
-      <article class="card">
-        <h2>Content systems</h2>
+      <a class="card" href="/experiments/seo-vs-ai">
+        <p class="eyebrow">Experiment</p>
+        <h2>SEO vs AI</h2>
         <p>
-          Notes and builds around CMS architecture, content modeling, governance,
-          metadata, and scalable publishing workflows.
+          Exploring where traditional SEO ends and AI discoverability begins.
         </p>
-      </article>
+      </a>
 
-      <article class="card">
-        <h2>Web operations</h2>
+      <a class="card" href="/experiments/javascript-rendered-content">
+        <p class="eyebrow">Experiment</p>
+        <h2>JavaScript-rendered content</h2>
         <p>
-          Practical work across Astro, Sanity, deployment, QA, SEO, analytics,
-          lead capture, and technical marketing execution.
+          Testing whether delivery architecture affects how AI systems retrieve,
+          understand, and cite content.
         </p>
-      </article>
+      </a>
     </section>
   </main>
 </BaseLayout>
