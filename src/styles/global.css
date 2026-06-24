@@ -1111,3 +1111,9 @@ body:has(.vehicle-page) p {
     gap: 8px;
   }
 }
+
+.web-ops-page .hero h1 {
+  max-width: 780px;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.08;
+}
