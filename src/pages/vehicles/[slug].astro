@@ -185,16 +185,8 @@ Submit
 }
 
 <script>
-const params = new URLSearchParams(window.location.search)
-
-document.getElementById('utm_source').value =
-params.get('utm_source') || ''
-
-document.getElementById('utm_medium').value =
-params.get('utm_medium') || ''
-
-document.getElementById('utm_campaign').value =
-params.get('utm_campaign') || ''
+import { populateAttribution } from '../../lib/attribution.js'
+populateAttribution(document, window.location.search)
 </script>
 
 </main>

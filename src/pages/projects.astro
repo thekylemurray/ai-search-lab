@@ -1,35 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-
-<BaseLayout
-  title="Projects | AI Search Lab"
-  description="Projects exploring AI discoverability, structured content, SEO, analytics, and digital experience."
->
-
+<BaseLayout title="Projects | AI Search Lab" description="Working examples of CMS architecture, web operations QA, and rendering experiments by Kyle Murray.">
+<main>
 <h1>Projects</h1>
-
-<p class="lede">
-Builds, prototypes, and experiments that turn AI discoverability ideas into working systems.
-</p>
-
+<p class="lede">Inspect the implementation, follow a QA decision, or reproduce a technical check.</p>
 <div class="cards">
-
-<a class="card" href="/">
-
-<div class="card-meta">
-IN PROGRESS
+<a class="card" href="/ev-lab"><p class="eyebrow">Implemented prototype</p><h2>CMS-driven EV landing pages</h2><p>Sanity content modeling, Astro route generation, reusable comparison content, and lead attribution. Includes source links, tradeoffs, and validation limits.</p></a>
+<a class="card" href="/web-ops#applied-example"><p class="eyebrow">Applied QA example</p><h2>From defect to verification</h2><p>A real optional-form edge case: identify the risk, assign the fix, check the regression, and define the release gate.</p></a>
+<a class="card" href="/experiments/javascript-rendered-content"><p class="eyebrow">Working fixture · AI evaluation pending</p><h2>Rendering and content availability</h2><p>Three routes, shared test content, and a reproducible initial-HTML check. Clear separation between implementation evidence and untested AI outcomes.</p></a>
 </div>
-
-<h3>AI Search Lab</h3>
-
-<p>
-A content-driven Astro site exploring AI search visibility,
-structured content, SEO, analytics, and digital experience.
-</p>
-
-</a>
-
-</div>
-
+<p><a href="/ai-search-lab">Explore the wider AI Search Lab →</a></p>
+</main>
 </BaseLayout>

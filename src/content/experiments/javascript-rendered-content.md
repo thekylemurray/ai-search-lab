@@ -1,92 +1,65 @@
 ---
 title: Can AI Systems Retrieve JavaScript-Rendered Content Reliably?
-description: Testing whether delivery architecture affects how AI systems retrieve, understand, and cite identical content.
-status: Planning
-updated: 2026-06-07
+description: A working rendering fixture with reproducible HTML checks and a separate plan for measuring AI retrieval.
+status: "Implemented; AI evaluation pending"
+updated: 2026-10-03
 tags: ["AI Search", "JavaScript", "Content Architecture", "Technical SEO"]
 ---
 
-## Question
+## What this demonstrates
 
-If identical content exists across different rendering approaches, does delivery architecture change whether AI systems retrieve, understand, or cite it?
+This experiment separates a question I can verify locally—whether the primary content is present in the initial HTML—from a question that requires external observations: whether an AI system retrieves, summarizes, and cites it accurately.
 
-## Hypothesis
+The deliverable is three working routes, a shared content fixture, and an automated check of the generated HTML. It is not evidence of improved rankings or AI citations.
 
-AI systems will retrieve and cite static HTML more reliably than client-side rendered content.
+## Implementation and technical decisions
 
-Expected reliability:
+- [Static HTML](/render-tests/static) reads the shared fixture during the Astro build.
+- [Pre-rendered HTML](/render-tests/pre-rendered) does the same and includes a build timestamp. It is a second build-time control, **not request-time server rendering**.
+- [Client-rendered JavaScript](/render-tests/client) initially contains a loading message; a browser script inserts the recommendation and context.
 
-1. Static HTML
-2. Server-rendered HTML
-3. Client-side rendered JavaScript content
+All three now import `src/data/renderTestContent.ts`, avoiding the independently copied client content in the original implementation. The repository uses Astro's default static output with no server adapter configured.
 
-## Method
+Page titles, descriptions, rendering labels, and the timestamp differ. This is an implementation comparison, not yet a controlled causal test of AI retrieval.
 
-Create three test pages with identical visible content:
+## Reproduce the HTML check
 
-- Static Astro page
-- Server-rendered page
-- Client-side rendered page
+From the repository root:
 
-Each page should use the same:
+```sh
+npm ci
+npm run build
+npm run check:evidence
+```
 
-- Title
-- Headings
-- Body copy
-- Metadata
-- Internal links
-- URL depth
-- Topic focus
+The full build reads the public Sanity dataset for the separate EV demo and therefore needs network access. The HTML check reads the generated `dist/render-tests/` files, excludes script and style content, and asserts the presence or absence of the exact recommendation.
 
-The only variable should be how the content is delivered.
+The October 3, 2026 local build and all three HTML assertions passed. The build generated 26 pages; this count includes the wider portfolio and EV demo.
 
-## Test Variants
-
-| Variant | Rendering Method | Expected AI Accessibility |
+| Variant | Observed initial HTML | What the check establishes |
 |---|---|---|
-| Static | HTML available immediately | High |
-| Server-rendered | HTML generated before response | High |
-| Client-rendered | Content appears after JavaScript runs | Lower |
+| Static | Recommendation present | Content can be read without executing browser JavaScript |
+| Pre-rendered | Recommendation present | The build-time control also contains the content |
+| Client | Loading message; recommendation absent | Primary content needs browser JavaScript |
 
-## Evaluation Criteria
+[Review the check source](https://github.com/thekylemurray/ai-search-lab/blob/main/scripts/check-render-output.mjs) and [shared fixture](https://github.com/thekylemurray/ai-search-lab/blob/main/src/data/renderTestContent.ts).
 
-Each page will be tested for:
+## Interpretation and limits
 
-- Retrieval
-- Summary accuracy
-- Citation behavior
-- Content completeness
-- Entity recognition
+Initial HTML availability is an observable property of the implementation. It does not establish what a particular crawler executes, whether a page is indexed, or whether an answer engine will cite it. No external AI retrieval results have been recorded here.
 
-## Test Prompts
+The recommendation inside the fixture is test content, not a finding about every AI system. The current topic also describes rendering itself; a future test should use neutral factual content to reduce that cue.
 
-Example prompts:
+## Next evaluation protocol
 
-- Summarize the test page.
-- What is the main recommendation on this page?
-- What rendering method does this page use?
-- Does this page explain AI retrieval reliability?
+1. Normalize titles, metadata, headings, and visible copy; remove the timestamp and variant labels from the evaluation pages.
+2. Publish the variants and record their URLs, content revision, availability, and test date.
+3. For each tested product, record its displayed model/version, browsing mode, exact prompt, and whether a URL was supplied. Keep direct-URL extraction separate from open-web discovery.
+4. Run at least three fresh sessions per variant in varied order with the same prompts. Save complete responses and cited URLs.
+5. Score summary accuracy against a fixed list of facts. Report retrieval success, factual completeness, and citation occurrence separately, with raw counts and failed runs.
 
-## Scorecard
+Suggested direct-URL prompt: “Using this page, state its main recommendation and explain the experiment context: [URL].” For open-web discovery, use the same neutral topic question without a URL.
 
-| Variant | Retrieved | Correct Summary | Cited | Notes |
-|---|---|---|---|---|
-| Static HTML | — | — | — | — |
-| Pre-rendered HTML | — | — | — | — |
-| Client-rendered JS | — | — | — | — |
+## Evidence still needed
 
-## Expected Outcome
-
-Static HTML should be easier for AI systems to retrieve, summarize, and cite because the primary content is available immediately in the document.
-
-Client-rendered content may be more fragile because some crawlers and retrieval systems may not execute JavaScript consistently.
-
-## Next Step
-
-Build the three test pages and compare how AI systems retrieve and describe each one.
-
-## Test Pages
-
-- [Static HTML test page](/render-tests/static)
-- [Pre-rendered HTML test page](/render-tests/pre-rendered)
-- [Client-rendered JavaScript test page](/render-tests/client)
+A dated run log with raw answers, exact citations, and scoring is required before drawing conclusions about AI behavior. Differences could reflect indexing, caching, product behavior, or content cues as well as rendering.
