@@ -1,43 +1,43 @@
-# Astro Starter Kit: Minimal
+# AI Search Lab
+
+Kyle Murray's Astro portfolio: web operations, structured CMS content, and AI discoverability experiments.
+
+## Start with the evidence
+
+- `/projects`: recruiter entry point for implemented examples.
+- `/ev-lab`: Sanity + Astro implementation case study; `/vehicles` and `/compare` contain the demo.
+- `/web-ops#applied-example`: optional-form defect, ownership decision, fix, and verification boundary.
+- `/experiments/javascript-rendered-content`: rendering fixtures and an AI evaluation protocol, with AI evaluation explicitly pending.
+- `/about`: background and links to work evidence.
+
+The existing `/` route remains the EV offers listing; `/ai-search-lab` is the portfolio landing page.
+
+## Develop and validate
+
+Requires Node.js >=22.12.0.
 
 ```sh
-npm create astro@latest -- --template minimal
+npm ci
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run build
+npm run check:evidence
+npm run preview
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+The full static build reads the configured public Sanity dataset for vehicle pages, so it requires network access. No secret is required by the checked-in read client. The separate Sanity Studio lives in `studio-kyles-ev-landing-lab/`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+`check:evidence` first checks attribution handling using small input stand-ins, then inspects built rendering fixtures under `dist/`. It must run after a successful build. These checks do not submit lead forms, validate downstream delivery, or test AI retrieval.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Content and implementation
 
-## 🧞 Commands
+- `src/content/experiments/`: Markdown entries validated by `src/content.config.ts`.
+- `src/layouts/`: shared portfolio and experiment layouts.
+- `src/pages/`: Astro routes, including CMS-backed vehicle views.
+- `src/data/renderTestContent.ts`: shared rendering fixture.
+- `src/lib/attribution.js`: optional-form attribution helper.
+- `scripts/`: reproducible evidence checks.
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+See [the portfolio evidence audit](docs/portfolio-evidence-audit.md) for priorities, claim boundaries, validation, and evidence still needed. Business performance and AI citation improvements are not established by this repository.

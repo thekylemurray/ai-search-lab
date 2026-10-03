@@ -20,6 +20,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </p>
     </section>
 
+    <section class="ops-section" id="applied-example">
+      <h2>Applied example: an optional form exposed a QA gap</h2>
+      <p><strong>Context:</strong> the EV Landing Lab uses a CMS toggle to show or hide its lead form. Reviewing the template revealed that the attribution script always accessed the form's three UTM inputs, even when the form was absent.</p>
+      <p><strong>Evidence type:</strong> repository code review and focused automated checks on a personal prototype. This is not a customer incident or a claim of recovered revenue.</p>
+      <div class="ops-table-wrap">
+        <table class="ops-table">
+          <caption>Issue, decision, and verification</caption>
+          <thead><tr><th scope="col">Step</th><th scope="col">Evidence and action</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Identify</th><td>The form renders only when showLeadForm is true. The original script assigned .value on elements returned by getElementById without checking whether they existed.</td></tr>
+            <tr><th scope="row">Assess</th><td>With the form disabled, the first missing input causes a JavaScript error. The page content can still render; the observed code does not establish lost leads.</td></tr>
+            <tr><th scope="row">Assign</th><td>This is template behavior, so the fix belongs in code. A content editor should not need to enable a form just to prevent a script error.</td></tr>
+            <tr><th scope="row">Fix</th><td>Extract attribution population into a helper that checks each input before assigning its value. Preserve current-URL attribution when the form is present.</td></tr>
+            <tr><th scope="row">Verify</th><td>Run focused checks for an absent form, populated and URL-decoded campaign values, and empty values when parameters are missing. Then build the site.</td></tr>
+            <tr><th scope="row">Release gate</th><td>Before production approval, verify both CMS toggle states in a browser and confirm an authorized test lead arrives with the expected attribution. Unit checks do not establish end-to-end delivery.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><a href="https://github.com/thekylemurray/ai-search-lab/blob/main/src/lib/attribution.js">Inspect the fix →</a> · <a href="https://github.com/thekylemurray/ai-search-lab/blob/main/scripts/check-attribution.mjs">Inspect the regression checks →</a> · <a href="/ev-lab">Read the full implementation case study →</a></p>
+      <p><strong>Reproduce:</strong> run <code>node scripts/check-attribution.mjs</code> from the repository root. No lead submission is sent by these checks.</p>
+      <p><strong>Rollback approach:</strong> revert the attribution change and rebuild if validation fails; preserve the CMS configuration and record the affected route, revision, and reproduction steps for engineering.</p>
+    </section>
+
+    <section class="ops-section">
+      <h2>Reusable operating framework</h2>
+      <p>The framework below describes my proposed workflow. Its sample priorities are illustrative; they are not a historical request log or measured service levels.</p>
+    </section>
+
     <section class="ops-section">
       <h2>1. Intake and prioritization</h2>
 

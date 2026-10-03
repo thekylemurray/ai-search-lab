@@ -1,54 +1,50 @@
 ---
-import '../styles/global.css'
+import BaseLayout from '../layouts/BaseLayout.astro';
+const source = 'https://github.com/thekylemurray/ai-search-lab/blob/main/';
 ---
-
-<style>
-:global(body){
-  background:#f8fafc;
-  color:#111827;
-}
-
-:global(body p){
-  opacity:1;
-}
-</style>
-
-<main class="vehicle-page">
-  <section class="ev-home-hero">
-    <p class="eyebrow">EV Landing Lab</p>
-
-    <h1>Headless EV marketing demo</h1>
-
-    <p class="hero-text">
-      A small Astro, Sanity, and Vercel project showing content-managed vehicle pages,
-      dynamic routes, comparison content, lead capture, and attribution fields.
-    </p>
-
-    <div class="ev-home-actions">
-      <a class="cta-button" href="/vehicles">
-        View EV offers
-      </a>
-
-      <a class="secondary-button" href="/compare">
-        Compare vehicles
-      </a>
+<BaseLayout title="EV Landing Lab case study | Kyle Murray" description="A source-backed case study of a Sanity and Astro vehicle marketing prototype: content modeling, static routes, comparison pages, and attribution QA.">
+<main class="web-ops-page">
+  <section class="hero">
+    <p class="eyebrow">Implementation case study · Personal prototype</p>
+    <h1>One vehicle content model, multiple marketing views.</h1>
+    <p class="lede">EV Landing Lab demonstrates how structured CMS content can support offer listings, detail pages, comparison content, and an optional lead form.</p>
+    <p><a href="/vehicles">Explore the working demo →</a> · <a href="/compare">Compare offers →</a></p>
+  </section>
+  <section class="ops-section">
+    <h2>Problem and scope</h2>
+    <p>Vehicle specifications, pricing, and campaign copy need to stay consistent across multiple pages. This prototype puts those fields in Sanity and reuses them in Astro templates instead of maintaining each offer page by hand.</p>
+    <p><strong>My project scope:</strong> the vehicle schema, CMS queries, page templates, comparison view, and lead-form integration. This is a personal implementation sample; no client conversion results or production scale are claimed.</p>
+  </section>
+  <section class="ops-section">
+    <h2>How the implementation works</h2>
+    <ol>
+      <li><strong>Model:</strong> a Sanity vehicle document contains copy, image, price, specifications, inventory status, CTA settings, and a lead-form toggle.</li>
+      <li><strong>Fetch:</strong> GROQ queries retrieve published vehicle data from the configured public dataset during the Astro build.</li>
+      <li><strong>Generate:</strong> <code>getStaticPaths()</code> creates a detail route from each vehicle slug; listing and comparison templates read the same document type.</li>
+      <li><strong>Capture:</strong> the optional form posts to Formspree with vehicle, page path, source, and three UTM fields populated from the current URL.</li>
+    </ol>
+    <p><strong>Tradeoff:</strong> build-time rendering delivers the content in HTML, but a CMS edit needs a successful rebuild before it appears on the site. A publishing webhook or deployment trigger is not documented in this repository.</p>
+  </section>
+  <section class="ops-section">
+    <h2>Inspect the evidence</h2>
+    <div class="ops-grid">
+      <article><h3>Content architecture</h3><p>The schema separates reusable specifications from campaign copy and optional conversion controls.</p><a href={source + 'studio-kyles-ev-landing-lab/schemaTypes/vehicle.ts'}>Read the vehicle schema →</a></article>
+      <article><h3>Routes and rendering</h3><p>The detail template maps CMS slugs to build-time pages and conditionally renders specifications, CTA, and form.</p><a href={source + 'src/pages/vehicles/[slug].astro'}>Read the detail template →</a></article>
+      <article><h3>Content reuse</h3><p>The comparison query sorts vehicles by title and renders their structured specifications side by side.</p><a href={source + 'src/pages/compare.astro'}>Read the comparison implementation →</a></article>
+      <article><h3>QA and defect resolution</h3><p>A source review found attribution code accessing fields on pages where the CMS had disabled the form. A guarded helper and focused regression checks now cover that case.</p><a href="/web-ops#applied-example">Read the defect-to-verification walkthrough →</a></article>
     </div>
   </section>
-
-  <section class="ev-home-grid">
-    <div>
-      <h2>Sanity CMS</h2>
-      <p>Vehicle content, pricing, images, CTAs, lead form settings, and specs are managed in Sanity.</p>
-    </div>
-
-    <div>
-      <h2>Astro</h2>
-      <p>Astro renders fast static pages, dynamic vehicle routes, and structured landing pages.</p>
-    </div>
-
-    <div>
-      <h2>Vercel</h2>
-      <p>GitHub pushes trigger deploys, making the site easy to preview, test, and publish.</p>
-    </div>
+  <section class="ops-section">
+    <h2>Delivered behavior and limits</h2>
+    <p>The repository implements reusable offer views and a configured form submission path. It does not contain a verified lead-delivery report, conversion dashboard, traffic baseline, or evidence of conversion lift.</p>
+    <ul>
+      <li>UTM capture covers the current page URL; attribution is not persisted across navigation.</li>
+      <li>The form offers Phone and Text preferences without collecting a phone number. That requires a product decision before production use.</li>
+      <li>Required-field validation for vehicle documents and missing-slug handling need hardening.</li>
+      <li>Production readiness still requires browser QA, authorized test submissions, delivery verification, and confirmed analytics events.</li>
+    </ul>
+    <p><strong>Next outcome to measure:</strong> record a baseline for publishing a new offer, then measure time to publish and content discrepancies across the three views. Conversion measurement should follow only after the submission and analytics paths are validated.</p>
   </section>
+  <p><a href="/projects">Back to portfolio projects →</a></p>
 </main>
+</BaseLayout>

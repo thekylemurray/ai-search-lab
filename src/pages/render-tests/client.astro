@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { renderTestContent } from "../../data/renderTestContent";
 ---
 
 <BaseLayout
@@ -7,7 +8,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   description="A client-rendered JavaScript test page for evaluating AI retrieval reliability."
 >
 
-<h1>AI Retrieval Test: JavaScript Rendered Content</h1>
+<h1>{renderTestContent.title}</h1>
 
 <p class="lede">
 Rendering method: Client-rendered JavaScript
@@ -20,12 +21,7 @@ Rendering method: Client-rendered JavaScript
 </div>
 
 <script>
-  const content = {
-    recommendation:
-      "Static HTML is the safest delivery method when content needs to be reliably retrieved, summarized, or cited by AI systems.",
-    body:
-      "This page is part of an AI Search Lab experiment testing whether rendering architecture affects AI retrieval. The visible content is intentionally identical across static HTML, server-rendered HTML, and client-rendered JavaScript variants."
-  };
+  import { renderTestContent as content } from "../../data/renderTestContent";
 
   const container = document.querySelector("#client-content");
 
