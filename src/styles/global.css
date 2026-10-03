@@ -1018,6 +1018,15 @@ body:has(.vehicle-page) p {
   border-collapse: collapse;
 }
 
+.ops-table caption {
+  padding: 20px 18px 12px;
+  color: var(--text);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+}
+
 .ops-table th,
 .ops-table td {
   padding: 16px 18px;
