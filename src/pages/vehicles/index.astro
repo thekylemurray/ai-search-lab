@@ -1,5 +1,5 @@
 ---
-import '../../styles/global.css'
+import DocumentLayout from '../../layouts/DocumentLayout.astro'
 import { sanityClient } from '../../lib/sanity'
 import { urlFor } from '../../lib/image'
 
@@ -25,6 +25,7 @@ opacity:1;
 }
 </style>
 
+<DocumentLayout title="EV Offers | EV Landing Lab" description="Explore sample electric vehicle offers in a Sanity and Astro portfolio prototype.">
 <main class="vehicle-page">
 
 <section class="vehicles-header">
@@ -86,3 +87,5 @@ alt={vehicle.title}
 </section>
 
 </main>
+
+</DocumentLayout>

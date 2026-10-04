@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css'
+import DocumentLayout from '../layouts/DocumentLayout.astro'
 import { sanityClient } from '../lib/sanity'
 import { urlFor } from '../lib/image'
 
@@ -29,6 +29,7 @@ const vehicles = await sanityClient.fetch(`
 }
 </style>
 
+<DocumentLayout title="Compare EV Offers | EV Landing Lab" description="Compare sample EV prices, range, charging specifications, and inventory in a structured-content prototype.">
 <main class="vehicle-page">
 
   <a class="back-link" href="/vehicles">
@@ -114,3 +115,5 @@ const vehicles = await sanityClient.fetch(`
   </section>
 
 </main>
+
+</DocumentLayout>

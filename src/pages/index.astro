@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css'
+import DocumentLayout from '../layouts/DocumentLayout.astro'
 import { sanityClient } from '../lib/sanity'
 import { urlFor } from '../lib/image'
 
@@ -25,6 +25,7 @@ const vehicles = await sanityClient.fetch(`
   }
 </style>
 
+<DocumentLayout title="EV Offers | EV Landing Lab" description="Explore sample electric vehicle offers in a Sanity and Astro portfolio prototype." canonicalPath="/vehicles/">
 <main class="vehicle-page">
   <section class="vehicles-header">
     <p class="eyebrow">EV Landing Lab</p>
@@ -53,3 +54,5 @@ const vehicles = await sanityClient.fetch(`
     ))}
   </section>
 </main>
+
+</DocumentLayout>

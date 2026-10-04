@@ -10,9 +10,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check:evidence": "node scripts/check-attribution.mjs && node scripts/check-render-output.mjs"
+    "check:evidence": "node scripts/check-attribution.mjs && node scripts/check-render-output.mjs",
+    "check:discoverability": "node scripts/check-discoverability.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "@sanity/client": "^7.22.1",
     "@sanity/image-url": "^2.1.1",
     "astro": "^6.4.4"

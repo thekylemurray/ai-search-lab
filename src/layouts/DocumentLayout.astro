@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+}
+const { title, description, canonicalPath = Astro.url.pathname, noindex = false } = Astro.props;
+if (!Astro.site) throw new Error('Configure the production site URL before building.');
+const path = canonicalPath === '/' ? '/' : `${canonicalPath.replace(/\/+$/, '')}/`;
+const canonical = new URL(path, Astro.site).href;
+const websiteUrl = new URL('/ai-search-lab/', Astro.site).href;
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', '@id': `${websiteUrl}#website`, url: websiteUrl, name: 'AI Search Lab', inLanguage: 'en' },
+    { '@type': 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: 'en', isPartOf: { '@id': `${websiteUrl}#website` } },
+  ],
+};
+// Escape HTML-significant characters in CMS copy before placing JSON in a script element.
+const schemaJson = JSON.stringify(schema).replace(/</g, '\\u003c');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AI Search Lab" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {!noindex && <script type="application/ld+json" set:html={schemaJson} />}
+  </head>
+  <body><slot /></body>
+</html>

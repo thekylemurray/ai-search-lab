@@ -1,24 +1,15 @@
 ---
-import "../styles/global.css";
+import DocumentLayout from "./DocumentLayout.astro";
 
 const {
   title = "AI Search Lab | Kyle Murray",
   description = "A working portfolio exploring AI discoverability, content architecture, and modern web operations.",
 } = Astro.props;
 
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-  </head>
-
-  <body>
+<DocumentLayout title={title} description={description}>
     <header class="site-header">
       <nav class="site-nav">
         <a href="/ai-search-lab" class={currentPath === "/ai-search-lab" ? "active" : ""}>
@@ -63,5 +54,4 @@ const currentPath = Astro.url.pathname;
       <p>© 2026 Kyle Murray</p>
       <p>Built with Astro • Exploring AI discoverability</p>
     </footer>
-  </body>
-</html>
+</DocumentLayout>
