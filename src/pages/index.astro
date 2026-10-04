@@ -1,9 +1,10 @@
 ---
 import DocumentLayout from '../layouts/DocumentLayout.astro'
+import { normalizeVehicleCopy } from '../lib/vehicleCopy'
 import { sanityClient } from '../lib/sanity'
 import { urlFor } from '../lib/image'
 
-const vehicles = await sanityClient.fetch(`
+const vehicles = (await sanityClient.fetch(`
 *[_type=="vehicle"]{
   title,
   heroText,
@@ -11,7 +12,7 @@ const vehicles = await sanityClient.fetch(`
   price,
   "slug": slug.current
 }
-`)
+`)).map(normalizeVehicleCopy)
 ---
 
 <style>
@@ -31,7 +32,7 @@ const vehicles = await sanityClient.fetch(`
     <p class="eyebrow">EV Landing Lab</p>
     <h1>Available EV Offers</h1>
     <p class="hero-text">
-      Explore current electric vehicle offers powered by Sanity, Astro, and Vercel.
+      Explore sample electric vehicle offers in this Sanity and Astro portfolio prototype.
     </p>
   </section>
 

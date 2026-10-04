@@ -1,9 +1,10 @@
 ---
 import DocumentLayout from '../layouts/DocumentLayout.astro'
+import { normalizeVehicleCopy } from '../lib/vehicleCopy'
 import { sanityClient } from '../lib/sanity'
 import { urlFor } from '../lib/image'
 
-const vehicles = await sanityClient.fetch(`
+const vehicles = (await sanityClient.fetch(`
 *[_type=="vehicle"] | order(title asc){
   title,
   heroText,
@@ -15,7 +16,7 @@ const vehicles = await sanityClient.fetch(`
   inventoryStatus,
   "slug": slug.current
 }
-`)
+`)).map(normalizeVehicleCopy)
 ---
 
 <style>
