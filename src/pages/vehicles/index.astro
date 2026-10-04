@@ -1,9 +1,10 @@
 ---
 import DocumentLayout from '../../layouts/DocumentLayout.astro'
+import { normalizeVehicleCopy } from '../../lib/vehicleCopy'
 import { sanityClient } from '../../lib/sanity'
 import { urlFor } from '../../lib/image'
 
-const vehicles = await sanityClient.fetch(`
+const vehicles = (await sanityClient.fetch(`
 *[_type=="vehicle"]{
 title,
 heroText,
@@ -11,7 +12,7 @@ image,
 price,
 "slug": slug.current
 }
-`)
+`)).map(normalizeVehicleCopy)
 ---
 
 <style>
@@ -39,7 +40,7 @@ Available EV Offers
 </h1>
 
 <p class="hero-text">
-Explore current inventory.
+Explore sample inventory in this portfolio prototype.
 </p>
 
 </section>

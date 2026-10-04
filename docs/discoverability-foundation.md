@@ -38,3 +38,11 @@ Next: deploy after review, inspect the published output, then execute the docume
 
 - https://docs.astro.build/en/guides/integrations-guide/sitemap/
 - https://schema.org/WebPage
+
+## Post-merge verification and copy cleanup
+
+PR #4 merged as `f8d8fd1a73cc67ce85977351f97ec225a5242155`. Direct live requests verified metadata, canonical URLs, and parseable JSON-LD on the portfolio landing, both listing routes, comparison, and Ioniq 5 detail page. The deployed sitemap contained 25 URLs, robots.txt advertised the sitemap, and the confirmation page carried noindex.
+
+The public Sanity document `e2543750-cd18-4806-b269-ba799a99ed29` still has an informal Ioniq 5 heroText placeholder. A temporary, exact-match correction in `src/lib/vehicleCopy.ts` changes this to “Lease smarter.” across all four consumers, including generated metadata. The original CMS document was not modified because an authenticated write connection is unavailable. Update its heroText to “Lease smarter.” in Sanity, publish, and rebuild; the correction can then be removed. Any different future copy already passes through unchanged.
+
+Listing introductions now identify the inventory as a portfolio prototype. An attempted Chromium installation failed, so visual/browser QA remains pending.

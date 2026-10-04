@@ -1,10 +1,11 @@
 ---
 import DocumentLayout from '../../layouts/DocumentLayout.astro'
+import { normalizeVehicleCopy } from '../../lib/vehicleCopy'
 import { sanityClient } from '../../lib/sanity'
 import { urlFor } from '../../lib/image'
 
 export async function getStaticPaths() {
-  const vehicles = await sanityClient.fetch(`
+  const vehicles = (await sanityClient.fetch(`
 *[_type=="vehicle"]{
   title,
   heroText,
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
   highlights,
   "slug": slug.current
 }
-`)
+`)).map(normalizeVehicleCopy)
 
   return vehicles.map((vehicle: any) => ({
     params: {
