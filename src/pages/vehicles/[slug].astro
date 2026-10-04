@@ -1,5 +1,5 @@
 ---
-import '../../styles/global.css'
+import DocumentLayout from '../../layouts/DocumentLayout.astro'
 import { sanityClient } from '../../lib/sanity'
 import { urlFor } from '../../lib/image'
 
@@ -47,6 +47,7 @@ const { vehicle } = Astro.props
 }
 </style>
 
+<DocumentLayout title={`${vehicle.title} | EV Landing Lab`} description={vehicle.heroText || `Explore the ${vehicle.title} sample offer in the EV Landing Lab portfolio prototype.`}>
 <main class="vehicle-page">
 
 <a class="back-link" href="/vehicles">
@@ -190,3 +191,5 @@ populateAttribution(document, window.location.search)
 </script>
 
 </main>
+
+</DocumentLayout>

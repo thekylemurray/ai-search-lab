@@ -24,6 +24,7 @@ npm run dev
 ```sh
 npm run build
 npm run check:evidence
+npm run check:discoverability
 npm run preview
 ```
 
@@ -41,3 +42,11 @@ The full static build reads the configured public Sanity dataset for vehicle pag
 - `scripts/`: reproducible evidence checks.
 
 See [the portfolio evidence audit](docs/portfolio-evidence-audit.md) for priorities, claim boundaries, validation, and evidence still needed. Business performance and AI citation improvements are not established by this repository.
+
+## Discoverability foundation
+
+All HTML routes use a shared document layout for titles, descriptions, canonical URLs, Open Graph metadata, and minimal WebSite/WebPage JSON-LD. Vehicle views retain their existing presentation. The production origin is configured in `astro.config.mjs`; trailing-slash URLs match the observed Cloudflare redirect behavior.
+
+The root offer listing points its canonical to `/vehicles/`. Both remain accessible; only the preferred listing is included in the generated sitemap. `/thank-you/` has `noindex, follow` and is excluded from the sitemap. `robots.txt` allows crawling and advertises the sitemap index. Rendering fixtures remain self-canonical and included so later retrieval evaluations can observe them; they are similar-content test pages, and independent indexing is not guaranteed.
+
+`npm run check:discoverability` inspects every generated HTML page and sitemap entry after a build. It verifies document metadata, canonical targets, basic JSON-LD consistency, and sitemap/indexability alignment. It is not a Schema.org validator, browser test, indexing report, or proof of AI citation improvement. No Product/Offer markup is asserted for the sample vehicle inventory.
