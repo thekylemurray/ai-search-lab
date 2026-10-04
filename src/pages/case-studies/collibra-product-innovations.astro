@@ -73,12 +73,60 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <p>The work demonstrates my ability to take supplied designs and product content through CMS authoring, component refinement, QA, and launch coordination.</p>
   </section>
 
+  <section class="ops-section" aria-labelledby="project-graphics-title">
+    <h2 id="project-graphics-title">Selected graphics from the project</h2>
+    <p>These original product graphics are retained from the Product Innovations project. They illustrate the visual material involved in the page work; they are not screenshots of the finished page or evidence of its timeline layout.</p>
+    <p><strong>Artwork credit:</strong> Collibra. My contribution was CMS authoring, component presentation, QA, and launch coordination.</p>
+
+    <figure class="project-graphic">
+      <a href="/images/case-studies/collibra/semantic-mapping.png" aria-label="Open semantic mapping graphic at full size">
+        <img src="/images/case-studies/collibra/semantic-mapping.png" width="1440" height="810" loading="lazy" decoding="async" alt="Collibra product illustration combining a Stewardship interface with Generate new model and Automated Stitching panels." />
+      </a>
+      <figcaption><strong>Semantic mapping and model generation.</strong> A detailed interface illustration combining several panels. It provides context for the imagery and design-alignment work described in this case study. <a href="/images/case-studies/collibra/semantic-mapping.png">View full-size graphic →</a></figcaption>
+    </figure>
+
+    <figure class="project-graphic">
+      <a href="/images/case-studies/collibra/data-lineage.png" aria-label="Open data lineage graphic at full size">
+        <img src="/images/case-studies/collibra/data-lineage.png" width="1440" height="810" loading="lazy" decoding="async" alt="Citizen Benefits technical lineage illustration connecting application and caseworker systems through eligibility checks to notification, disbursement, and open-data outputs." />
+      </a>
+      <figcaption><strong>Technical lineage for self-hosted deployments.</strong> A product graphic using a citizen-benefits example to show relationships between systems. <a href="/images/case-studies/collibra/data-lineage.png">View full-size graphic →</a></figcaption>
+    </figure>
+
+    <figure class="project-graphic">
+      <a href="/images/case-studies/collibra/mcp-server.png" aria-label="Open MCP server graphic at full size">
+        <img src="/images/case-studies/collibra/mcp-server.png" width="1440" height="810" loading="lazy" decoding="async" alt="Product diagram showing MCP clients connected through a consumer and MCP server to Business Glossary, Asset Recommender, and future tools." />
+      </a>
+      <figcaption><strong>MCP server.</strong> A conceptual product illustration connecting AI clients with Collibra tools. <a href="/images/case-studies/collibra/mcp-server.png">View full-size graphic →</a></figcaption>
+    </figure>
+  </section>
+
   <section class="ops-section">
     <h2>About the live reference</h2>
     <p>Collibra has redesigned this page since the version I authored. The current page is linked for project context; its present styling and later updates should not be attributed to me.</p>
     <p><a href="https://www.collibra.com/products/innovations">View Collibra’s current Product Innovations page →</a></p>
-    <p>This case study is based on my recollection of the work. Screenshots of my original version and the original QA checklist are not included.</p>
+    <p>This case study is based on my recollection of the work. The selected graphics above are original project assets. Screenshots of my finished page and the original QA checklist are not included.</p>
   </section>
   <p><a href="/projects">Back to projects →</a> · <a href="/contact">Discuss my web production work →</a></p>
 </main>
 </BaseLayout>
+
+<style>
+  .project-graphic {
+    margin: 2rem 0;
+  }
+  .project-graphic > a {
+    display: block;
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: clamp(0.5rem, 2vw, 1.5rem);
+  }
+  .project-graphic img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .project-graphic figcaption {
+    margin-top: 0.75rem;
+    line-height: 1.6;
+  }
+</style>
