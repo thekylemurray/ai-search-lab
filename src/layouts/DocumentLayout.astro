@@ -10,7 +10,7 @@ const { title, description, canonicalPath = Astro.url.pathname, noindex = false 
 if (!Astro.site) throw new Error('Configure the production site URL before building.');
 const path = canonicalPath === '/' ? '/' : `${canonicalPath.replace(/\/+$/, '')}/`;
 const canonical = new URL(path, Astro.site).href;
-const websiteUrl = new URL('/ai-search-lab/', Astro.site).href;
+const websiteUrl = new URL('/', Astro.site).href;
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [
