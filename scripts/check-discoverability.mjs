@@ -29,7 +29,7 @@ async function inspect(dir = '') {
     const canonicals = links.filter(l => l.rel === 'canonical');
     assert.equal(canonicals.length, 1, `${route}: canonical count`);
     const canonical = canonicals[0].href;
-    assert.equal(canonical, new URL(route === '/' ? '/vehicles/' : route, origin).href, `${route}: canonical mismatch`);
+    assert.equal(canonical, new URL(route, origin).href, `${route}: canonical mismatch`);
     const url = new URL(canonical);
     assert.equal(url.search + url.hash, '', `${route}: tracking in canonical`);
     const noindex = meta.some(m => m.name === 'robots' && m.content.includes('noindex'));

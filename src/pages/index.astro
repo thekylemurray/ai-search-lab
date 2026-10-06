@@ -1,59 +1,50 @@
 ---
-import DocumentLayout from '../layouts/DocumentLayout.astro'
-import { normalizeVehicleCopy } from '../lib/vehicleCopy'
-import { sanityClient } from '../lib/sanity'
-import { urlFor } from '../lib/image'
-
-const vehicles = (await sanityClient.fetch(`
-*[_type=="vehicle"]{
-  title,
-  heroText,
-  image,
-  price,
-  "slug": slug.current
-}
-`)).map(normalizeVehicleCopy)
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-
+<BaseLayout title="Kyle Murray | Technical Web Production and Content Operations" description="Kyle Murray's portfolio: enterprise CMS publishing, technical SEO, content operations, and practical AI discoverability experiments. Explore professional work and implementation evidence.">
+  <main class="home">
+    <section class="hero">
+      <p class="eyebrow">Kyle Murray · Raleigh, NC</p>
+      <h1>Technical web production. From content to launch.</h1>
+      <p class="lede">I bring content, design, and engineering together to publish reliable web experiences. My work spans enterprise CMS operations, technical SEO, and hands-on experiments in AI discoverability.</p>
+      <div class="hero-actions">
+        <a href="/projects/">Explore my work →</a>
+        <a href="/resume/Kyle_Murray_Resume.pdf" download>Download résumé (PDF)</a>
+        <a href="https://www.linkedin.com/in/thekylemurray">LinkedIn</a>
+      </div>
+    </section>
+    <section aria-labelledby="selected-work">
+      <h2 id="selected-work">Selected work</h2>
+      <div class="cards">
+        <a class="card" href="/case-studies/collibra-product-innovations/">
+          <p class="eyebrow">Professional work · Collibra</p>
+          <h2>Product innovations, from CMS to launch</h2>
+          <p>Sanity authoring, Figma alignment, metadata, internal links, and launch coordination for new and upcoming product updates.</p>
+        </a>
+        <a class="card" href="/web-ops/#applied-example">
+          <p class="eyebrow">Applied QA example</p>
+          <h2>From defect to verification</h2>
+          <p>Follow an optional-form attribution issue through diagnosis, a code fix, and regression checks.</p>
+        </a>
+        <a class="card" href="/ev-lab/">
+          <p class="eyebrow">Working prototype</p>
+          <h2>Structured content with Sanity and Astro</h2>
+          <p>CMS-driven vehicle pages, reusable comparison content, and campaign attribution. Explore the implementation and its limits.</p>
+        </a>
+        <a class="card" href="/experiments/javascript-rendered-content/">
+          <p class="eyebrow">Rendering experiment</p>
+          <h2>What is available before JavaScript runs?</h2>
+          <p>Shared test content and initial-HTML checks across rendering examples, with AI retrieval evaluation still to come.</p>
+        </a>
+      </div>
+    </section>
+    <section class="next-steps" aria-labelledby="connect">
+      <h2 id="connect">Experience behind the work</h2>
+      <p>Enterprise SaaS at Collibra. Healthcare publishing at BayCare. Content strategy at Aware Senior Care.</p>
+      <p><a href="/about/">More about me</a> · <a href="/contact/">Get in touch</a> · <a href="/ai-search-lab/">Explore AI Search Lab</a> · <a href="/vehicles/">View the EV demo</a></p>
+    </section>
+  </main>
+</BaseLayout>
 <style>
-  :global(body) {
-    background: #f8fafc;
-    color: #111827;
-  }
-
-  :global(body p) {
-    opacity: 1;
-  }
+  .next-steps { margin-top: 64px; }
 </style>
-
-<DocumentLayout title="EV Offers | EV Landing Lab" description="Explore sample electric vehicle offers in a Sanity and Astro portfolio prototype." canonicalPath="/vehicles/">
-<main class="vehicle-page">
-  <section class="vehicles-header">
-    <p class="eyebrow">EV Landing Lab</p>
-    <h1>Available EV Offers</h1>
-    <p class="hero-text">
-      Explore sample electric vehicle offers in this Sanity and Astro portfolio prototype.
-    </p>
-  </section>
-
-  <section class="vehicle-grid">
-    {vehicles.map((vehicle: any) => (
-      <a class="vehicle-card" href={`/vehicles/${vehicle.slug}`}>
-        {vehicle.image && (
-          <img
-            src={urlFor(vehicle.image).width(800).height(500).url()}
-            alt={vehicle.title}
-          />
-        )}
-
-        <div>
-          <h2>{vehicle.title}</h2>
-          <p>{vehicle.heroText}</p>
-          <strong>{vehicle.price}</strong>
-        </div>
-      </a>
-    ))}
-  </section>
-</main>
-
-</DocumentLayout>
