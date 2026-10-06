@@ -1,0 +1,44 @@
+{
+  "date_local": "2026-10-06",
+  "timezone": "America/New_York",
+  "runs": [
+    {
+      "request": {
+        "system2_search_query": [
+          {
+            "q": "site:ai-search-lab.pages.dev/render-tests/ \"initial HTML\""
+          }
+        ],
+        "response_length": "long"
+      },
+      "result": "Empty search results",
+      "target_domain_results": 0,
+      "returned_urls": []
+    },
+    {
+      "request": {
+        "system1_search_query": [
+          {
+            "q": "site:ai-search-lab.pages.dev/render-tests/ \"initial HTML\""
+          }
+        ],
+        "response_length": "long"
+      },
+      "result": "10 off-domain results; 0 target-domain results",
+      "target_domain_results": 0,
+      "returned_urls": [
+        "https://www.reddit.com/r/nextjs/comments/1po7p91/if_the_initial_html_is_the_same_for_both_rsc_and/",
+        "https://www.edchange.org/multicultural/initial.html",
+        "https://stackoverflow.com/questions/61035675/gatsby-change-over-the-fold-initial-html",
+        "https://github.com/filamentphp/filament/discussions/6120",
+        "https://github.com/archimatetool/archi/issues/365",
+        "https://forums.zotero.org/discussion/71167/initial-html-tags-in-citation-prefixes",
+        "https://www.facebook.com/ChristineforOregon/videos/politicians-want-to-change-the-date-of-the-gas-tax-vote-for-one-reason-politics-/936055738947750/",
+        "https://forum.playcanvas.com/t/modifying-default-initial-html-on-the-editor/34903",
+        "https://stackoverflow.com/questions/9200469/prefetching-html-content-on-initial-html-page-for-future-requests",
+        "https://stackoverflow.com/questions/47051055/reset-the-element-to-initial-html-content-when-select-value-changes"
+      ]
+    }
+  ],
+  "interpretation": "No target result observed. Not proof of absence from an index. Off-domain results excluded."
+}

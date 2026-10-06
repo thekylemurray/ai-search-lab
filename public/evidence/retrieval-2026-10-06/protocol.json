@@ -1,0 +1,28 @@
+{
+  "study": "Direct-URL retrieval pilot",
+  "date_local": "2026-10-05",
+  "timezone": "America/New_York",
+  "date_utc": "2026-10-06",
+  "environment": "ChatGPT Work assistant using web retrieval open",
+  "model_version": "Not exposed by the retrieval tool",
+  "design": "One batched direct-URL retrieval attempt per existing variant; exploratory, not blinded and not a causal rendering comparison.",
+  "prompt_template": "Using only text returned by the web retrieval tool for [URL], state the main recommendation and experiment context. If either is unavailable, report unavailable. Do not fill gaps from repository or conversation context.",
+  "urls": [
+    "https://ai-search-lab.pages.dev/render-tests/static/",
+    "https://ai-search-lab.pages.dev/render-tests/pre-rendered/",
+    "https://ai-search-lab.pages.dev/render-tests/client/"
+  ],
+  "scoring": {
+    "retrieval": "Page body returned, distinct from a tool error",
+    "recommendation": "Returned text contains primary content available in initial HTML when access without JavaScript is required",
+    "context": "Returned text describes shared content across two build-time variants and one client-rendered variant",
+    "citation": "A usable retrieved-page reference is available; not an organic citation metric"
+  },
+  "limits": [
+    "Assistant has already seen repository ground truth; only newly returned page text counts.",
+    "One request per URL; no independent fresh sessions or repeated-trial inference.",
+    "Titles, metadata, labels and timestamp differ.",
+    "Tool caching, extraction and network restrictions may affect results.",
+    "Does not test open-web discovery, rankings, or other AI products."
+  ]
+}
