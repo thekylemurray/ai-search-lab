@@ -1,8 +1,8 @@
 ---
 title: Can AI Systems Retrieve JavaScript-Rendered Content Reliably?
 description: A working rendering fixture with reproducible HTML checks and a separate plan for measuring AI retrieval.
-status: "Implemented; AI evaluation pending"
-updated: 2026-10-03
+status: "Implemented; access pilot inconclusive"
+updated: 2026-10-06
 tags: ["AI Search", "JavaScript", "Content Architecture", "Technical SEO"]
 ---
 
@@ -46,9 +46,13 @@ The October 3, 2026 local build and all three HTML assertions passed. The build 
 
 ## Interpretation and limits
 
-Initial HTML availability is an observable property of the implementation. It does not establish what a particular crawler executes, whether a page is indexed, or whether an answer engine will cite it. No external AI retrieval results have been recorded here.
+Initial HTML availability is an observable property of the implementation. It does not establish what a particular crawler executes, whether a page is indexed, or whether an answer engine will cite it. An [external direct-URL access pilot](/experiments/direct-url-retrieval-pilot/) is now recorded: all three URLs returned access errors, so retrieval accuracy and rendering effects could not be evaluated.
 
 The recommendation inside the fixture is test content, not a finding about every AI system. The current topic also describes rendering itself; a future test should use neutral factual content to reduce that cue.
+
+## Recorded access pilot
+
+The October 5 local-date pilot (October 6 UTC) preserves the exact request, raw errors, constrained answers, and scoring rules. It is an access observation, not completion of the repeated-session protocol below. [Read the pilot and download its evidence](/experiments/direct-url-retrieval-pilot/).
 
 ## Next evaluation protocol
 
@@ -62,4 +66,4 @@ Suggested direct-URL prompt: “Using this page, state its main recommendation a
 
 ## Evidence still needed
 
-A dated run log with raw answers, exact citations, and scoring is required before drawing conclusions about AI behavior. Differences could reflect indexing, caching, product behavior, or content cues as well as rendering.
+The access pilot is documented; successful page retrieval and repeated independent answer runs are still required before drawing conclusions about AI behavior. Differences could reflect indexing, caching, product behavior, or content cues as well as rendering.

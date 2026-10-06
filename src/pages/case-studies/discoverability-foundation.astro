@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Discoverability implementation | Kyle Murray" description="Shared metadata, canonical URLs, JSON-LD, and sitemap handling across an Astro portfolio, with automated output verification.">
+<main class="web-ops-page">
+  <section class="hero">
+    <p class="eyebrow">Implementation · Technical SEO and QA</p>
+    <h1>A consistent foundation for discoverability.</h1>
+    <p class="lede">I connected portfolio pages and CMS-generated routes to a shared document layout, then added checks that make metadata and indexing intent reviewable before release.</p>
+  </section>
+  <section class="ops-section">
+    <h2>The problem</h2>
+    <p>Portfolio pages had titles and descriptions, but vehicle listings, detail pages, the comparison view, and confirmation route lacked a shared document head. Canonical URLs, a generated sitemap, and machine-readable page descriptions needed a consistent implementation.</p>
+  </section>
+  <section class="ops-section">
+    <h2>What I implemented</h2>
+    <ul>
+      <li>A shared Astro document layout for titles, descriptions, canonical URLs, and Open Graph metadata.</li>
+      <li>WebSite and WebPage JSON-LD describing the actual portfolio and pages, with safe handling of CMS text.</li>
+      <li>A generated sitemap and robots.txt reference covering portfolio and CMS routes.</li>
+      <li>Explicit exceptions: the confirmation page uses noindex and stays out of the sitemap.</li>
+      <li>A self-canonical portfolio homepage at / and a separate EV prototype at /vehicles/.</li>
+    </ul>
+  </section>
+  <section class="ops-section">
+    <h2>How I verified it</h2>
+    <p>The homepage release passed automated checks across 27 generated HTML documents and 26 sitemap entries. These counts describe that release; new content changes the totals.</p>
+    <p>Checks cover a single document head and title, nonempty descriptions, canonical destinations, Open Graph URL agreement, parseable JSON-LD with matching page fields, and sitemap coverage consistent with indexability. Existing attribution regression checks and rendering assertions also passed.</p>
+    <pre><code>npm run build
+npm run check:evidence
+npm run check:discoverability</code></pre>
+  </section>
+  <section class="ops-section">
+    <h2>What this demonstrates</h2>
+    <p>Technical SEO implementation across reusable templates, explicit handling of exceptions, and automated QA that connects publishing decisions to generated output.</p>
+    <p>These checks do not establish indexing, rich-result eligibility, traffic growth, or AI citation gains. JSON-LD parsing is not full Schema.org validation. The sample vehicles are not presented as verified commercial Product or Offer data.</p>
+  </section>
+  <section class="ops-section">
+    <h2>Inspect the evidence</h2>
+    <ul>
+      <li><a href="https://github.com/thekylemurray/ai-search-lab/blob/main/src/layouts/DocumentLayout.astro">Shared document layout</a></li>
+      <li><a href="https://github.com/thekylemurray/ai-search-lab/blob/main/scripts/check-discoverability.mjs">Automated discoverability checks</a></li>
+      <li><a href="https://github.com/thekylemurray/ai-search-lab/blob/main/docs/discoverability-foundation.md">Implementation decisions and verification record</a></li>
+      <li><a href="/experiments/direct-url-retrieval-pilot/">Direct-URL retrieval pilot and its access limitation</a></li>
+    </ul>
+  </section>
+  <p><a href="/projects/">Back to projects →</a></p>
+</main>
+</BaseLayout>

@@ -1,0 +1,25 @@
+{
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://ai-search-lab.pages.dev/render-tests/static/"
+      },
+      {
+        "ref_id": "https://ai-search-lab.pages.dev/render-tests/pre-rendered/"
+      },
+      {
+        "ref_id": "https://ai-search-lab.pages.dev/render-tests/client/"
+      }
+    ],
+    "response_length": "long"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Internal Error ()\n【turn0view0】 [wordlim: 200] Source: open({\"ref_id\":\"https://ai-search-lab.pages.dev/render-tests/static/\",\"lineno\":null}); Total lines: 1\nL0: URL https://ai-search-lab.pages.dev/render-tests/static/ is not accessible via this tool.\n\n--------------------------------------------------------------------------------\nInternal Error ()\n【turn0view1】 [wordlim: 200] Source: open({\"ref_id\":\"https://ai-search-lab.pages.dev/render-tests/pre-rendered/\",\"lineno\":null}); Total lines: 1\nL0: URL https://ai-search-lab.pages.dev/render-tests/pre-rendered/ is not accessible via this tool.\n\n--------------------------------------------------------------------------------\nInternal Error ()\n【turn0view2】 [wordlim: 200] Source: open({\"ref_id\":\"https://ai-search-lab.pages.dev/render-tests/client/\",\"lineno\":null}); Total lines: 1\nL0: URL https://ai-search-lab.pages.dev/render-tests/client/ is not accessible via this tool.\n"
+      }
+    ],
+    "isError": false
+  }
+}
