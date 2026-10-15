@@ -1,0 +1,22 @@
+---
+import RetrievalStudyV2 from '../../../components/RetrievalStudyV2.astro';
+---
+<RetrievalStudyV2 client>
+  <script>
+    import { study } from '../../../data/retrievalStudyV2.js';
+    const target = document.querySelector('#workshop-details');
+    if (target) {
+      const list = document.createElement('dl');
+      for (const fact of study.facts) {
+        const row = document.createElement('div');
+        const term = document.createElement('dt');
+        const definition = document.createElement('dd');
+        term.textContent = fact.label;
+        definition.textContent = fact.value;
+        row.append(term, definition);
+        list.append(row);
+      }
+      target.replaceChildren(list);
+    }
+  </script>
+</RetrievalStudyV2>

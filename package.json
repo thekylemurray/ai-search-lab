@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check:evidence": "node scripts/check-attribution.mjs && node scripts/check-render-output.mjs",
+    "check:evidence": "node scripts/check-attribution.mjs && node scripts/check-render-output.mjs && node scripts/check-retrieval-v2.mjs",
     "check:discoverability": "node scripts/check-discoverability.mjs"
   },
   "dependencies": {

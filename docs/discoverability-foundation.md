@@ -2,6 +2,14 @@
 
 Prepared against main at `d60e5a14c1d02d639b3f8d04f24c9dc7430365a7`.
 
+## Current state and historical scope — October 14, 2026
+
+This document records the PR #4/#5 release. Its verification counts and deployment observations below are historical, not checks of every later release.
+
+**Superseded by PR #6:** `/` is now the portfolio entrance, is self-canonical, and is included in the sitemap. `/vehicles/` is the separate EV listing and is also self-canonical. The former root-to-vehicles canonical decision below no longer describes the current implementation. The README and current source describe the active behavior.
+
+PR #7 reported 29 generated HTML documents and 28 sitemap entries. Counts change with new routes and CMS content; always attach verification results to a revision. The new neutral retrieval study is prepared separately and does not replace the historical pilot.
+
 ## Problem and implementation
 
 Portfolio pages had titles and descriptions, but the vehicle listings, detail routes, comparison view, and confirmation route lacked a shared HTML document head. Canonical URLs, machine-readable page descriptions, and a generated sitemap were not implemented.
@@ -10,7 +18,7 @@ A shared `DocumentLayout.astro` now supplies a complete document, metadata, cano
 
 Astro's production site is configured as `https://ai-search-lab.pages.dev`. Trailing-slash canonical URLs match the 308 redirect observed for the live `/ai-search-lab` route during this work. The official sitemap integration discovers generated routes, including CMS and content-collection routes. `robots.txt` advertises the sitemap and permits crawling.
 
-## Decisions
+## Historical decisions (PR #4)
 
 - `/` and `/vehicles/` show the same underlying offers. The root canonical points to `/vehicles/`; the root stays accessible but is excluded from the sitemap. This is a preference signal, not a redirect or guarantee of search-engine selection.
 - `/thank-you/` is noindex and omitted from the sitemap. Its copy no longer promises contact by a vehicle specialist or implies that visiting it establishes successful delivery.
@@ -18,7 +26,7 @@ Astro's production site is configured as `https://ai-search-lab.pages.dev`. Trai
 - JSON-LD describes the actual website and pages. Sample vehicles are not represented as verified commercial Product/Offer entities. CMS text is escaped before embedding JSON in a script element.
 - No fabricated publication dates, last-modified timestamps, review scores, or outcome metrics are added.
 
-## Verification
+## Historical verification (PR #4)
 
 - `npm run build`: passed against the public Sanity dataset; 27 HTML pages generated, plus robots.txt and sitemap files.
 - `npm run check:evidence`: passed all existing attribution scenarios and rendering assertions.
@@ -43,6 +51,6 @@ Next: deploy after review, inspect the published output, then execute the docume
 
 PR #4 merged as `f8d8fd1a73cc67ce85977351f97ec225a5242155`. Direct live requests verified metadata, canonical URLs, and parseable JSON-LD on the portfolio landing, both listing routes, comparison, and Ioniq 5 detail page. The deployed sitemap contained 25 URLs, robots.txt advertised the sitemap, and the confirmation page carried noindex.
 
-The public Sanity document `e2543750-cd18-4806-b269-ba799a99ed29` still has an informal Ioniq 5 heroText placeholder. A temporary, exact-match correction in `src/lib/vehicleCopy.ts` changes this to “Lease smarter.” across all four consumers, including generated metadata. The original CMS document was not modified because an authenticated write connection is unavailable. Update its heroText to “Lease smarter.” in Sanity, publish, and rebuild; the correction can then be removed. Any different future copy already passes through unchanged.
+At the time of PR #5, the public Sanity document `e2543750-cd18-4806-b269-ba799a99ed29` had an informal Ioniq 5 heroText placeholder. A temporary, exact-match correction in `src/lib/vehicleCopy.ts` changes this to “Lease smarter.” across all four consumers, including generated metadata. The original CMS document was not modified because an authenticated write connection is unavailable. Update its heroText to “Lease smarter.” in Sanity, publish, and rebuild; the correction can then be removed. Any different future copy already passes through unchanged.
 
 Listing introductions now identify the inventory as a portfolio prototype. An attempted Chromium installation failed, so visual/browser QA remains pending.

@@ -1,10 +1,20 @@
 ---
 title: Can AI Systems Retrieve JavaScript-Rendered Content Reliably?
 description: A working rendering fixture with reproducible HTML checks and a separate plan for measuring AI retrieval.
-status: "Implemented; access pilot inconclusive"
-updated: 2026-10-06
+status: "Neutral study prepared; new runs pending"
+updated: 2026-10-14
 tags: ["AI Search", "JavaScript", "Content Architecture", "Technical SEO"]
 ---
+
+## New neutral-content study
+
+A second, versioned study is prepared at [page A](/render-tests/v2/a/), [page B](/render-tests/v2/b/), and [page C](/render-tests/v2/c/). It uses six fictional workshop facts with matching titles, descriptions, and headings. There are no rendering labels or timestamps in the visible content. A and B are identical build-time controls; C inserts the same details with browser JavaScript. These are two rendering conditions, not three distinct architectures.
+
+[Open the nine-run guide, copyable prompts, worksheet, and scoring rules](https://github.com/thekylemurray/ai-search-lab/blob/main/docs/retrieval-study-v2.md). Start only after the change is merged, deployed, and its access checks pass. No v2 AI answers or outcomes have been recorded yet.
+
+The original routes and October 2026 pilot below remain unchanged as historical evidence. Do not combine their results with v2.
+
+## Original fixture and pilot (historical)
 
 ## What this demonstrates
 
@@ -54,7 +64,7 @@ The recommendation inside the fixture is test content, not a finding about every
 
 The October 5 local-date pilot (October 6 UTC) preserves the exact request, raw errors, constrained answers, and scoring rules. It is an access observation, not completion of the repeated-session protocol below. [Read the pilot and download its evidence](/experiments/direct-url-retrieval-pilot/).
 
-## Next evaluation protocol
+## Original proposed protocol (superseded by the v2 guide)
 
 1. Normalize titles, metadata, headings, and visible copy; remove the timestamp and variant labels from the evaluation pages.
 2. Publish the variants and record their URLs, content revision, availability, and test date.
