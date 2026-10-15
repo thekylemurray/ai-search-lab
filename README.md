@@ -59,4 +59,4 @@ The portfolio root and separate vehicle listing are self-canonical and included 
 
 ## Neutral retrieval study (v2)
 
-The [nine-run guide](docs/retrieval-study-v2.md) includes deployment gates, exact prompts, a blank worksheet, scoring rules, and limitations. The versioned routes preserve the original pilot pages. Run only after merge and deployment verification; no v2 AI outcomes are claimed. `check:evidence` now also checks matched v2 metadata/headings and initial-HTML fact availability.
+The [nine-run guide](docs/retrieval-study-v2.md) includes deployment gates, exact prompts, a blank worksheet, scoring rules, and limitations. The versioned routes preserve the original pilot pages. Nine user-supplied responses are documented in [the results](src/content/experiments/neutral-rendering-results.md), with [transcripts and scores](public/evidence/retrieval-v2-2026-10-15/runs.json). Retrieval provenance and session settings remain unverified; no causal or visibility-gain claim is made. `check:evidence` now also checks matched v2 metadata/headings and initial-HTML fact availability.

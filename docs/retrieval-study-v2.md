@@ -1,6 +1,8 @@
 # Neutral-content retrieval study: nine-run guide
 
-**Status: prepared; not yet run. Content revision: retrieval-v2.1.**
+**Protocol prepared before collection. Content revision: retrieval-v2.1.**
+
+Post-collection note (October 15): nine user-supplied responses are now available in [the results report](../src/content/experiments/neutral-rendering-results.md). The original procedure and blank worksheet below are retained as the prewritten plan; they do not certify compliance. Fresh-chat use, exact mode and execution times remain unconfirmed.
 
 ## What we are trying to learn
 
@@ -110,7 +112,7 @@ Report exact-page citation occurrence separately (yes/no; ignore trailing-slash 
 
 ## Results format to publish after the study
 
-For each page, report scheduled/completed/invalid runs, observed access categories, factual-match scores with verification status, exact-page citations out of completed runs, wrong facts and missing facts. Preserve raw counts and failures. Keep the three preflights separate. No results exist yet.
+For each page, report scheduled/completed/invalid runs, observed access categories, factual-match scores with verification status, exact-page citations out of completed runs, wrong facts and missing facts. Preserve raw counts and failures. Keep the three preflights separate. This was the prewritten reporting template; see the post-collection note for available results.
 
 A defensible conclusion names the product, mode, date, revision and sample size: “In these three runs per URL, we observed …”. Equal results are useful. All-access-failure results mean the question remains unassessed in that environment.
 
