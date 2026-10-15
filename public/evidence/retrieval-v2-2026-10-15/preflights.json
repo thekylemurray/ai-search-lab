@@ -1,0 +1,60 @@
+{
+  "excluded_from_nine_run_totals": true,
+  "records": [
+    {
+      "product_model_label": "ChatGPT Work / GPT-6 Astra Medium",
+      "variant": "A",
+      "reported_at": "2026-10-14T21:35:34-04:00",
+      "executed_at": null,
+      "assigned_prompt": "Open https://ai-search-lab.pages.dev/render-tests/v2/a/ and use only that page to answer: Where is the workshop, on what day does it run, what time does it start, how long does it last, how many participants can attend, and what should a visitor bring? Give one short answer for each item and cite the page you actually used. If the page or an item is unavailable, say unavailable. Do not infer missing facts or use other sources.",
+      "result_summary": "All six items unavailable",
+      "factual_match_count": null,
+      "citation_as_supplied": null,
+      "notes": "Summary of user-pasted preflight; not a provider trace. Same model/settings not independently reconfirmed."
+    },
+    {
+      "product_model_label": "ChatGPT Work / GPT-6 Astra Medium",
+      "variant": "B",
+      "reported_at": "2026-10-14T21:36:12-04:00",
+      "executed_at": null,
+      "assigned_prompt": "Open https://ai-search-lab.pages.dev/render-tests/v2/b/ and use only that page to answer: Where is the workshop, on what day does it run, what time does it start, how long does it last, how many participants can attend, and what should a visitor bring? Give one short answer for each item and cite the page you actually used. If the page or an item is unavailable, say unavailable. Do not infer missing facts or use other sources.",
+      "result_summary": "All six items unavailable",
+      "factual_match_count": null,
+      "citation_as_supplied": null,
+      "notes": "Summary of user-pasted preflight; not a provider trace. Same model/settings not independently reconfirmed."
+    },
+    {
+      "product_model_label": "Gemini / Flash-lite",
+      "variant": "A",
+      "reported_at": "2026-10-14T23:23:56-04:00",
+      "executed_at": null,
+      "assigned_prompt": "Open https://ai-search-lab.pages.dev/render-tests/v2/a/ and use only that page to answer: Where is the workshop, on what day does it run, what time does it start, how long does it last, how many participants can attend, and what should a visitor bring? Give one short answer for each item and cite the page you actually used. If the page or an item is unavailable, say unavailable. Do not infer missing facts or use other sources.",
+      "result_summary": "Six factual matches",
+      "factual_match_count": 6,
+      "citation_as_supplied": "https://ai-search-lab.pages.dev/render-tests/v2/a/|",
+      "notes": "A citation contained a trailing pipe; whether copy artifact or actual destination is unconfirmed."
+    },
+    {
+      "product_model_label": "Gemini / Flash-lite",
+      "variant": "B",
+      "reported_at": "2026-10-14T23:25:11-04:00",
+      "executed_at": null,
+      "assigned_prompt": "Open https://ai-search-lab.pages.dev/render-tests/v2/b/ and use only that page to answer: Where is the workshop, on what day does it run, what time does it start, how long does it last, how many participants can attend, and what should a visitor bring? Give one short answer for each item and cite the page you actually used. If the page or an item is unavailable, say unavailable. Do not infer missing facts or use other sources.",
+      "result_summary": "Six factual matches",
+      "factual_match_count": 6,
+      "citation_as_supplied": "https://ai-search-lab.pages.dev/render-tests/v2/b/",
+      "notes": "Summary of user-pasted preflight; not a provider trace. Same model/settings not independently reconfirmed."
+    },
+    {
+      "product_model_label": "Gemini / Flash-lite",
+      "variant": "C",
+      "reported_at": "2026-10-14T23:26:08-04:00",
+      "executed_at": null,
+      "assigned_prompt": "Open https://ai-search-lab.pages.dev/render-tests/v2/c/ and use only that page to answer: Where is the workshop, on what day does it run, what time does it start, how long does it last, how many participants can attend, and what should a visitor bring? Give one short answer for each item and cite the page you actually used. If the page or an item is unavailable, say unavailable. Do not infer missing facts or use other sources.",
+      "result_summary": "All six items unavailable",
+      "factual_match_count": null,
+      "citation_as_supplied": "https://ai-search-lab.pages.dev/render-tests/v2/c/",
+      "notes": "Summary of user-pasted preflight; not a provider trace. Same model/settings not independently reconfirmed."
+    }
+  ]
+}
