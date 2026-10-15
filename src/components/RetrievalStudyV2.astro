@@ -1,0 +1,18 @@
+---
+import DocumentLayout from '../layouts/DocumentLayout.astro';
+import { study } from '../data/retrievalStudyV2.js';
+interface Props { client?: boolean }
+const { client = false } = Astro.props;
+---
+<DocumentLayout title={study.title} description={study.description}>
+  <main class="page-shell">
+    <h1>{study.title}</h1>
+    <p>{study.notice}</p>
+    <h2>Visitor information</h2>
+    <div id="workshop-details">
+      {client ? <p>Loading workshop details...</p> :
+        <dl>{study.facts.map(fact => <div><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}</dl>}
+    </div>
+    <slot />
+  </main>
+</DocumentLayout>

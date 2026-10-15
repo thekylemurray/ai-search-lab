@@ -56,3 +56,7 @@ The portfolio root and separate vehicle listing are self-canonical and included 
 - /case-studies/discoverability-foundation/: problem, implementation, verification, and claim boundaries.
 - /experiments/direct-url-retrieval-pilot/: October 5, 2026 local-date pilot (October 6 UTC); all three direct opens returned access errors. Rendering effects and answer accuracy remain unevaluated.
 - public/evidence/retrieval-2026-10-06/: protocol, exact tool request/response, and a separate search follow-up log.
+
+## Neutral retrieval study (v2)
+
+The [nine-run guide](docs/retrieval-study-v2.md) includes deployment gates, exact prompts, a blank worksheet, scoring rules, and limitations. The versioned routes preserve the original pilot pages. Run only after merge and deployment verification; no v2 AI outcomes are claimed. `check:evidence` now also checks matched v2 metadata/headings and initial-HTML fact availability.
