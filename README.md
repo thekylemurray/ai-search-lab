@@ -60,3 +60,7 @@ The portfolio root and separate vehicle listing are self-canonical and included 
 ## Neutral retrieval study (v2)
 
 The [nine-run guide](docs/retrieval-study-v2.md) includes deployment gates, exact prompts, a blank worksheet, scoring rules, and limitations. The versioned routes preserve the original pilot pages. Nine user-supplied responses are documented in [the results](src/content/experiments/neutral-rendering-results.md), with [transcripts and scores](public/evidence/retrieval-v2-2026-10-15/runs.json). Retrieval provenance and session settings remain unverified; no causal or visibility-gain claim is made. `check:evidence` now also checks matched v2 metadata/headings and initial-HTML fact availability.
+
+## Portfolio measurement
+
+Optional GA4 page views and résumé/contact/LinkedIn click events are implemented with production-host and consent gates. See [measurement plan and deployment validation](docs/portfolio-measurement.md). Run `npm run check:analytics` after building. Production receipt is pending; local checks are not visitor or conversion evidence.

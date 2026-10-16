@@ -38,5 +38,23 @@ const schemaJson = JSON.stringify(schema).replace(/</g, '\\u003c');
     <meta property="og:url" content={canonical} />
     {!noindex && <script type="application/ld+json" set:html={schemaJson} />}
   </head>
-  <body><slot /></body>
+  <body>
+    <slot />
+    {!Astro.url.pathname.startsWith('/render-tests/') && (
+      <aside aria-label="Analytics preferences" class="analytics-preferences">
+        <div data-analytics-choice hidden>
+          <p>Allow Google Analytics to help improve this portfolio? It measures page visits and résumé and contact-link clicks. <a href="/privacy/">Privacy details</a></p>
+          <button type="button" data-analytics-accept>Allow analytics</button>
+          <button type="button" data-analytics-decline>No thanks</button>
+        </div>
+        <button type="button" data-analytics-settings hidden>Analytics preferences</button>
+      </aside>
+    )}
+    {!Astro.url.pathname.startsWith('/render-tests/') && <script is:inline src="/scripts/portfolio-analytics.js" defer></script>}
+  </body>
+  <style is:global>
+    .analytics-preferences { max-width: 72rem; margin: 1.5rem auto; padding: 0 1.25rem 1.5rem; font-size: .9rem; }
+    .analytics-preferences button { font: inherit; padding: .5rem .75rem; margin: .25rem .5rem .25rem 0; cursor: pointer; }
+    [data-analytics-choice] { padding: 1rem; border: 1px solid #888; border-radius: .5rem; margin-bottom: .5rem; }
+  </style>
 </html>
