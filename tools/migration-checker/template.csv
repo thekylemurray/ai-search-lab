@@ -1,0 +1,2 @@
+old_url,new_url,expected_title,expected_h1,expected_canonical
+https://example.com/old,https://example.com/new,New page,New page,https://example.com/new

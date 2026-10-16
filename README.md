@@ -64,3 +64,7 @@ The [nine-run guide](docs/retrieval-study-v2.md) includes deployment gates, exac
 ## Portfolio measurement
 
 Optional GA4 page views and résumé/contact/LinkedIn click events are implemented with production-host and consent gates. See [measurement plan and deployment validation](docs/portfolio-measurement.md). Run `npm run check:analytics` after building. Owner-supplied Realtime and DebugView screenshots confirm test-event receipt and one project identifier. See the [case study](src/pages/case-studies/portfolio-measurement.astro) and [dated observations](public/evidence/analytics-2026-10-15/observations.json). Account settings and remaining production checks are documented separately; these observations are not organic traffic or conversion evidence.
+
+## Migration checker
+
+A local Python tool and browser interface live in [tools/migration-checker](tools/migration-checker/README.md). The downloadable ZIP is available at `/downloads/migration-checker.zip`. Tests run with `python -m unittest discover -s tools/migration-checker -v`. Validation uses synthetic HTTP fixtures; no client migration or time-savings claim is made.
