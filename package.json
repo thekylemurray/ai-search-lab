@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "check:evidence": "node scripts/check-attribution.mjs && node scripts/check-render-output.mjs && node scripts/check-retrieval-v2.mjs",
-    "check:discoverability": "node scripts/check-discoverability.mjs"
+    "check:discoverability": "node scripts/check-discoverability.mjs",
+    "check:analytics": "node scripts/check-analytics.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
