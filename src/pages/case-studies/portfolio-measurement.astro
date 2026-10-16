@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Portfolio measurement with GA4 | Kyle Murray" description="A focused GA4 implementation for project views and recruiter-link clicks, with automated checks and screenshot evidence of live event receipt.">
+<main class="web-ops-page">
+  <section class="hero">
+    <p class="eyebrow">Analytics implementation · Verified test events</p>
+    <h1>From portfolio interactions to verified analytics.</h1>
+    <p class="lede">I defined a small measurement plan, added optional GA4 tracking to an Astro portfolio, and checked that test interactions reached Google Analytics with useful event details.</p>
+    <p>Verification recorded October 15, 2026 (America/New_York).</p>
+  </section>
+  <section class="ops-section">
+    <h2>The problem</h2>
+    <p>The portfolio presented projects and recruiter contact links, but had no analytics integration to show which pages were visited or where visitors clicked the résumé, email, and LinkedIn links. The first goal was to establish trustworthy collection before interpreting visitor behavior.</p>
+  </section>
+  <section class="ops-section">
+    <h2>Measurement decisions</h2>
+    <ul>
+      <li><strong>Project visits:</strong> page_view records page loads, with a project_id on five mapped project pages. A visit to the Projects listing is distinct from viewing an individual project.</li>
+      <li><strong>Résumé interest:</strong> resume_click records activation of the public PDF link, not proof of a completed download or reading.</li>
+      <li><strong>Contact interest:</strong> contact_click and linkedin_click record link activation, not a sent email, connection, or hiring outcome.</li>
+    </ul>
+    <p>I used fixed event labels and source-page paths to keep the implementation focused. Google’s enhanced measurement is required to be disabled in the property to avoid overlapping tracking; that account setting is not shown in the evidence below.</p>
+  </section>
+  <section class="ops-section">
+    <h2>Implementation and checks</h2>
+    <p>The shared Astro layout loads a small tracking script. It requests Google’s library only after a visitor allows analytics and only on the production hostname. Rendering-test fixtures are excluded. Visitors can change their choice through analytics preferences.</p>
+    <p>Custom click parameters contain fixed labels rather than email addresses or form contents. Configured page URLs omit query strings and fragments, and referrers are reduced to their origin. These are implementation choices, not a claim of a comprehensive privacy audit.</p>
+    <p>Automated checks cover consent gating, excluded hosts and fixtures, one explicit page-view command per document load, click classification, URL sanitization, debug scope, and withdrawal handling. Generated-page checks also verify the tracking script’s inclusion and exclusion.</p>
+    <p>I used AI-assisted coding to implement and test the integration, created the GA4 property, and performed the live verification interactions. The source, test scope, and observed results are available for inspection.</p>
+  </section>
+  <section class="ops-section">
+    <h2>Observed results</h2>
+    <p>During a controlled test session, GA4 Realtime showed two page views and one each of resume_click, contact_click, and linkedin_click. The page titles identified Contact and Projects. A later DebugView screenshot showed a page_view with project_id set to discoverability-foundation.</p>
+    <figure>
+      <a href="/evidence/analytics-2026-10-15/realtime-events.png"><img src="/evidence/analytics-2026-10-15/realtime-events.png" width="1344" height="714" loading="lazy" alt="GA4 Realtime showing two page views and one each of contact_click, linkedin_click, and resume_click." style="max-width:100%;height:auto;" /></a>
+      <figcaption>Realtime: the four intended event types reached GA4 during owner testing. Counts are a snapshot, not organic audience results.</figcaption>
+    </figure>
+    <figure>
+      <a href="/evidence/analytics-2026-10-15/debugview-project.png"><img src="/evidence/analytics-2026-10-15/debugview-project.png" width="988" height="654" loading="lazy" alt="GA4 DebugView with a page_view event expanded to show project_id equals discoverability-foundation." style="max-width:100%;height:auto;" /></a>
+      <figcaption>DebugView: one project identifier was inspected successfully. This later snapshot overlaps the Realtime session; its counts are not added to the earlier totals.</figcaption>
+    </figure>
+  </section>
+  <section class="ops-section">
+    <h2>What this demonstrates</h2>
+    <p>Measurement planning, JavaScript event instrumentation, consent-aware implementation, automated QA, and live analytics validation. The outcome is a working collection foundation with evidence of event receipt.</p>
+    <p>The screenshots do not establish organic traffic, conversion improvement, all project mappings, every event parameter, or successful delivery on every browser. Production checks for no requests before consent and after withdrawal remain undocumented, as does browser visual QA. Local command tests do not replace those checks.</p>
+  </section>
+  <section class="ops-section">
+    <h2>Inspect the evidence</h2>
+    <ul>
+      <li><a href="https://github.com/thekylemurray/ai-search-lab/pull/10">Implementation pull request</a></li>
+      <li><a href="https://github.com/thekylemurray/ai-search-lab/blob/main/public/scripts/portfolio-analytics.js">Tracking source</a></li>
+      <li><a href="https://github.com/thekylemurray/ai-search-lab/blob/main/scripts/check-analytics.mjs">Automated checks</a></li>
+      <li><a href="https://github.com/thekylemurray/ai-search-lab/blob/main/docs/portfolio-measurement.md">Measurement plan and validation checklist</a></li>
+      <li><a href="/evidence/analytics-2026-10-15/observations.json">Dated observation record and evidence limits</a></li>
+    </ul>
+  </section>
+  <p><a href="/projects/">Back to projects →</a></p>
+</main>
+</BaseLayout>

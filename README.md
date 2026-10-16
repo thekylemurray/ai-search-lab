@@ -63,4 +63,4 @@ The [nine-run guide](docs/retrieval-study-v2.md) includes deployment gates, exac
 
 ## Portfolio measurement
 
-Optional GA4 page views and résumé/contact/LinkedIn click events are implemented with production-host and consent gates. See [measurement plan and deployment validation](docs/portfolio-measurement.md). Run `npm run check:analytics` after building. Production receipt is pending; local checks are not visitor or conversion evidence.
+Optional GA4 page views and résumé/contact/LinkedIn click events are implemented with production-host and consent gates. See [measurement plan and deployment validation](docs/portfolio-measurement.md). Run `npm run check:analytics` after building. Owner-supplied Realtime and DebugView screenshots confirm test-event receipt and one project identifier. See the [case study](src/pages/case-studies/portfolio-measurement.astro) and [dated observations](public/evidence/analytics-2026-10-15/observations.json). Account settings and remaining production checks are documented separately; these observations are not organic traffic or conversion evidence.

@@ -1,7 +1,7 @@
 # Portfolio measurement
 
 Implementation date: 2026-10-16 UTC. Property: G-M2J2LQWKYX.
-Status: implementation prepared; production receipt and GA4 configuration pending.
+Status: PR #10 merged and production code checked. Owner-supplied Realtime and DebugView screenshots confirm receipt of the four intended event types and one project_id value. GA4 account settings and the remaining production checks are not independently verified.
 
 ## Questions and events
 
@@ -35,3 +35,11 @@ Create event-scoped custom dimensions for project_id, resource_id and contact_me
 Automated checks can establish command generation, event classification, consent gating, production-host gating and generated-page wiring. They cannot establish delivery to Google, account configuration, real visitor behavior, hiring outcomes, or conversion lift. The portfolio case study should be published as verified only after the production steps above are recorded.
 
 References: https://developers.google.com/analytics/devguides/collection/ga4/events
+
+## Observed live verification — October 15, 2026 (America/New_York)
+
+The owner supplied two screenshots during the guided test session. Realtime shows page_view=2, contact_click=1, linkedin_click=1 and resume_click=1, with Contact and Projects page titles. The later DebugView screenshot shows page_view with project_id=discoverability-foundation and debug_mode present. These overlapping snapshots must not be summed. Dates reflect the reporting session; exact execution timestamps are not independently established.
+
+Original screenshot copies and a SHA-256 manifest are in `public/evidence/analytics-2026-10-15/`. The case study is `/case-studies/portfolio-measurement/`.
+
+This establishes test-event receipt and one inspected project parameter. Enhanced measurement settings, all other project mappings, click parameter values, browser visual QA, and production network checks before consent/after withdrawal remain undocumented. No organic traffic, conversion lift, completed download, or sent-message claim is supported.

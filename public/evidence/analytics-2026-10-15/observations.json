@@ -1,0 +1,35 @@
+{
+  "reported_date": "2026-10-15",
+  "timezone": "America/New_York",
+  "implementation_pr": 10,
+  "provenance": "Owner-supplied screenshots of a controlled test session, inspected in conversation. No GA4 API export or independent account access. Upload timestamps are not verified execution timestamps.",
+  "realtime": {
+    "screenshot": "realtime-events.png",
+    "page_view": 2,
+    "contact_click": 1,
+    "linkedin_click": 1,
+    "resume_click": 1,
+    "page_titles": [
+      "Contact Kyle Murray (truncated in screenshot)",
+      "Projects (truncated in screenshot)"
+    ]
+  },
+  "debugview": {
+    "screenshot": "debugview-project.png",
+    "event": "page_view",
+    "parameter": "project_id",
+    "value": "discoverability-foundation",
+    "debug_mode_parameter_present": true
+  },
+  "limits": [
+    "Overlapping snapshots; counts must not be summed.",
+    "Test activity, not organic visitor or conversion evidence.",
+    "Account Enhanced measurement setting not independently verified.",
+    "No production network evidence for pre-consent or withdrawal behavior.",
+    "Other project mappings and custom click parameter values not verified in supplied screenshots."
+  ],
+  "sha256": {
+    "debugview-project.png": "2a68bbb2805038cc6619e510bd0294021e2a049b49785a6c07537febb8991f05",
+    "realtime-events.png": "ebf3a556ea8318133a4ecd5f3ec117c0afd228443043e89c4b5149e57d07f028"
+  }
+}
