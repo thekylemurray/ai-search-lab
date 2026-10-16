@@ -57,4 +57,4 @@ assert.equal(run({ consent: 'granted' }).commands().find(c => c[0] === 'config')
 run({ blockedStorage: true }).handlers['[data-analytics-accept]']();
 assert.ok(fs.readFileSync('dist/index.html','utf8').includes('/scripts/portfolio-analytics.js'));
 assert.ok(!fs.readFileSync('dist/render-tests/v2/a/index.html','utf8').includes('/scripts/portfolio-analytics.js'));
-console.log('Analytics checks passed: consent, host exclusions, single page view, click classification, sanitization, debug scope, withdrawal and generated wiring. GA4 receipt remains unverified.');
+console.log('Analytics checks passed: consent, host exclusions, single page view, click classification, sanitization, debug scope, withdrawal and generated wiring. This automated check does not verify GA4 receipt; see the dated screenshot evidence.');
