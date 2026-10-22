@@ -43,3 +43,7 @@ Tests use a real local HTTP server, with eight deliberately constructed cases: c
 Limitations: initial response HTML only; no JavaScript rendering, visual inspection, full content comparison, robots/noindex checks, browser/session authentication, sitemap crawl or indexing claims. A one-H1 requirement is this checklist's convention, not a universal SEO rule. No benchmarked time savings. An owner-supplied browser screenshot and downloaded CSV were reviewed on October 16, 2026: all eight demo cases matched the expected 1 PASS, 3 FAIL and 4 REVIEW results. A narrow Result column observed in that screenshot was subsequently corrected; the revised layout still needs a browser recheck. The exact launcher path and Python version were not captured. Implemented with AI assistance; designed to be read and extended as a Python learning project.
 
 Files to explore: `checker.py` contains CSV parsing, HTTP fetching, HTML extraction and checks; `app.py` supplies the local interface and demo routes; `test_checker.py` provides repeatable tests.
+
+## Twenty-page practice migration
+
+Double-click `start-exercise-windows.cmd` for a fictional community website with original, flawed and corrected versions. Follow [EXERCISE.md](EXERCISE.md) for the guided review. The exercise includes ten seeded defects, two known checker blind spots, downloadable mappings and an answer key. Run `python exercise.py --benchmark` to reproduce both reports automatically.
