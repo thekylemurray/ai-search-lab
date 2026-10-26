@@ -2,6 +2,7 @@
 import DocumentLayout from "./DocumentLayout.astro";
 
 const {
+  image,
   title = "AI Search Lab | Kyle Murray",
   description = "A working portfolio exploring AI discoverability, content architecture, and modern web operations.",
 } = Astro.props;
@@ -9,7 +10,7 @@ const {
 const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
 ---
 
-<DocumentLayout title={title} description={description}>
+<DocumentLayout title={title} description={description} image={image}>
     <header class="site-header">
       <nav class="site-nav">
         <a href="/" class={currentPath === "/" ? "active" : ""}>
@@ -40,6 +41,8 @@ const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
           About
         </a>
 
+        <a href="/foster-dogs/" class={currentPath.startsWith("/foster-dogs") ? "active" : ""}>Foster Dogs</a>
+
         <a href="/contact" class={currentPath.startsWith("/contact") ? "active" : ""}>
           Contact
         </a>
@@ -55,3 +58,7 @@ const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
       <p>Built with Astro • Exploring AI discoverability</p>
     </footer>
 </DocumentLayout>
+
+<style>
+  .site-nav { flex-wrap: wrap; }
+</style>
